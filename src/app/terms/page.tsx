@@ -4,7 +4,7 @@ import { WHATSAPP_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Sale — Khaleej Peptides",
-  description: "Terms governing the use of khaleejpeptides.ae and the purchase of catalogue items.",
+  description: "Terms governing the use of khaleejpeptides.com and the purchase of catalogue items.",
 };
 
 export default function TermsPage() {
@@ -19,13 +19,13 @@ export default function TermsPage() {
       </p>
 
       <p className="mt-8 text-sm leading-relaxed text-ink-soft">
-        Plain-language terms governing the use of khaleejpeptides.ae and the purchase of
+        Plain-language terms governing the use of khaleejpeptides.com and the purchase of
         catalogue items.
       </p>
 
       <Section title="1. Who We Are">
         <p>
-          Khaleej Peptides (khaleejpeptides.ae) is a UAE-incorporated research-supply business.
+          Khaleej Peptides (khaleejpeptides.com) is a UAE-incorporated research-supply business.
           References to &ldquo;we&rdquo; or &ldquo;us&rdquo; mean Khaleej Peptides; references to &ldquo;you&rdquo; mean
           the natural person placing an order or browsing the site.
         </p>
@@ -33,7 +33,7 @@ export default function TermsPage() {
 
       <Section title="2. Licence to Use This Site">
         <p>
-          We grant you a limited, personal, non-exclusive right to access khaleejpeptides.ae and
+          We grant you a limited, personal, non-exclusive right to access khaleejpeptides.com and
           place orders under these Terms. It can&rsquo;t be transferred, sold, or sub-licensed, and
           we can withdraw it at any time. It gives you no ownership in the site, its content, or
           the Khaleej Peptides name and brand.
@@ -60,7 +60,7 @@ export default function TermsPage() {
       </Section>
 
       <Section title="5. Acceptable Use">
-        <p>When using khaleejpeptides.ae, you agree not to:</p>
+        <p>When using khaleejpeptides.com, you agree not to:</p>
         <ul>
           <li>
             Use the site unlawfully, in breach of these Terms or anyone else&rsquo;s rights, or give
@@ -84,13 +84,13 @@ export default function TermsPage() {
 
       <Section title="6. Your Account">
         <p>
-          If you create an account via account.khaleejpeptides.ae, you&rsquo;re responsible for your
+          If you create an account via account.khaleejpeptides.com, you&rsquo;re responsible for your
           login details and all activity under it. Tell us at{" "}
           <a
-            href="mailto:support@khaleejpeptides.ae"
+            href="mailto:support@khaleejpeptides.com"
             className="text-rosegold-deep underline-offset-4 hover:underline"
           >
-            support@khaleejpeptides.ae
+            support@khaleejpeptides.com
           </a>{" "}
           if you suspect unauthorised use. We can suspend, restrict, or close an account at any
           time, with or without notice, for suspected fraud, misuse, or breach of these Terms.
@@ -141,7 +141,7 @@ export default function TermsPage() {
         <p>
           Our site may link to third-party resources such as couriers or payment providers. We
           don&rsquo;t control those sites or their content and policies, and a link isn&rsquo;t an
-          endorsement. We can&rsquo;t guarantee khaleejpeptides.ae stays available or error-free, and
+          endorsement. We can&rsquo;t guarantee khaleejpeptides.com stays available or error-free, and
           may suspend it for maintenance or any reason without notice.
         </p>
       </Section>
@@ -172,7 +172,7 @@ export default function TermsPage() {
       <Section title="16. Changes">
         <p>
           We may update these terms periodically. The current version always lives at
-          khaleejpeptides.ae/terms with a last-updated date.
+          khaleejpeptides.com/terms with a last-updated date.
         </p>
       </Section>
 
@@ -181,10 +181,10 @@ export default function TermsPage() {
         <p className="text-sm leading-relaxed text-ink-soft">
           Questions on these terms? Write to{" "}
           <a
-            href="mailto:support@khaleejpeptides.ae"
+            href="mailto:support@khaleejpeptides.com"
             className="text-rosegold-deep underline-offset-4 hover:underline"
           >
-            support@khaleejpeptides.ae
+            support@khaleejpeptides.com
           </a>
           <br />
           <strong className="font-semibold text-plum-deep">WhatsApp:</strong> {WHATSAPP_DISPLAY}

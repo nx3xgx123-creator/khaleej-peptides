@@ -25,10 +25,10 @@ export default function PrivacyPolicyPage() {
       <Section title="What We Collect">
         <ul>
           <li><strong className="font-semibold text-plum-deep">Order data:</strong> name, institution, email, shipping address, phone, items ordered.</li>
-          <li><strong className="font-semibold text-plum-deep">Account data:</strong> if you create an account via account.khaleejpeptides.ae, your name, email, and order history.</li>
+          <li><strong className="font-semibold text-plum-deep">Account data:</strong> if you create an account via account.khaleejpeptides.com, your name, email, and order history.</li>
           <li><strong className="font-semibold text-plum-deep">Payment data:</strong> held by our payment processor; we never see the full card number.</li>
           <li><strong className="font-semibold text-plum-deep">Site analytics:</strong> aggregate counts of pageviews and clicks for catalogue maintenance.</li>
-          <li><strong className="font-semibold text-plum-deep">Support correspondence:</strong> the contents of emails or messages you send to support@khaleejpeptides.ae.</li>
+          <li><strong className="font-semibold text-plum-deep">Support correspondence:</strong> the contents of emails or messages you send to support@khaleejpeptides.com.</li>
         </ul>
       </Section>
 
@@ -62,10 +62,10 @@ export default function PrivacyPolicyPage() {
           You can request a copy of the personal data we hold about you, or ask us to delete it
           where the legal retention period has elapsed. Write to{" "}
           <a
-            href="mailto:support@khaleejpeptides.ae"
+            href="mailto:support@khaleejpeptides.com"
             className="text-rosegold-deep underline-offset-4 hover:underline"
           >
-            support@khaleejpeptides.ae
+            support@khaleejpeptides.com
           </a>
           .
         </p>
@@ -76,10 +76,10 @@ export default function PrivacyPolicyPage() {
         <p className="text-sm leading-relaxed text-ink-soft">
           For any question about how your data is handled, write to{" "}
           <a
-            href="mailto:support@khaleejpeptides.ae"
+            href="mailto:support@khaleejpeptides.com"
             className="text-rosegold-deep underline-offset-4 hover:underline"
           >
-            support@khaleejpeptides.ae
+            support@khaleejpeptides.com
           </a>
           .
         </p>

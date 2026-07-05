@@ -123,10 +123,10 @@ export default function CompliancePage() {
           If you have a compliance concern, a misuse you&rsquo;ve witnessed, a counterfeit Khaleej
           Peptides vial in circulation, or a regulatory question, write to{" "}
           <a
-            href="mailto:support@khaleejpeptides.ae"
+            href="mailto:support@khaleejpeptides.com"
             className="text-rosegold-deep underline-offset-4 hover:underline"
           >
-            support@khaleejpeptides.ae
+            support@khaleejpeptides.com
           </a>
           . Reports are read by the founding team.
         </p>
