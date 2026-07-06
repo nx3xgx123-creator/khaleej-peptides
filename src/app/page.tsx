@@ -35,7 +35,7 @@ export default function Home() {
               <span className="eyebrow text-rosegold-deep">Premium Research Peptides · UAE</span>
             </div>
             <h1 className="font-display text-5xl font-medium leading-[1.05] text-plum-deep sm:text-6xl lg:text-7xl">
-              Elevate Your Biology.
+              Research-Grade Peptides.
               <br />
               <span className="text-rosegold-gradient">Gulf-Grade Purity.</span>
             </h1>
@@ -83,7 +83,7 @@ export default function Home() {
             Shop by Category
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-ink-soft">
-            A research-grade catalog organized around your goals.
+            A research-grade catalogue organised by compound class.
           </p>
         </div>
 
@@ -182,12 +182,12 @@ export default function Home() {
           <DnaMark size={20} />
         </div>
         <h2 className="font-display text-3xl font-medium leading-snug text-plum-deep sm:text-4xl">
-          Peptide science. <span className="text-rosegold-gradient">Powerful potential.</span>
+          Peptide science. <span className="text-rosegold-gradient">Verified purity.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
-          Khaleej Peptides offers a curated range of research peptides designed to support
-          cellular regeneration, performance, longevity and metabolic health — backed by
-          rigorous third-party purity testing and a sophisticated, science-first approach.
+          Khaleej Peptides offers a curated range of research peptides and related compounds,
+          each characterised for identity and purity and backed by rigorous third-party
+          testing — supplied for laboratory research use only.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/shop" className="btn-primary">Browse the Catalog</Link>

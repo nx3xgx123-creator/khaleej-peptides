@@ -15,34 +15,34 @@ export const FOCUS_META: Record<
   { title: string; short: string; cap: string; blurb: string }
 > = {
   weightloss: {
-    title: "Weight Loss & Metabolic",
-    short: "Weight Loss",
+    title: "Metabolic & Incretin",
+    short: "Metabolic",
     cap: "var(--color-cap-gold)",
-    blurb: "GLP-1 class & metabolic peptides for appetite, fat loss & body composition.",
+    blurb: "GLP-1, GIP and glucagon-receptor agonists and related metabolic-pathway peptides.",
   },
   growth: {
-    title: "Growth & Performance",
-    short: "Growth & Performance",
+    title: "Growth-Hormone Axis",
+    short: "GH Axis",
     cap: "var(--color-cap-lavender)",
-    blurb: "GH-axis secretagogues & growth factors for muscle, output & recovery.",
+    blurb: "GHRH analogues, GH secretagogues and growth-factor peptides.",
   },
   recovery: {
-    title: "Healing & Recovery",
-    short: "Healing & Recovery",
+    title: "Regenerative & Structural",
+    short: "Regenerative",
     cap: "var(--color-cap-mint)",
-    blurb: "Tissue, joint, gut & skin repair and regeneration compounds.",
+    blurb: "Peptides studied in vitro for extracellular-matrix, angiogenesis and tissue-remodelling pathways.",
   },
   antiaging: {
-    title: "Anti-Aging & Longevity",
-    short: "Longevity",
+    title: "Mitochondrial & Cellular",
+    short: "Cellular",
     cap: "var(--color-cap-rose)",
-    blurb: "Cellular energy, mitochondrial support & healthy-aging peptides.",
+    blurb: "Mitochondrial-targeted and cellular-energy peptides and cofactors.",
   },
   wellness: {
-    title: "Cognitive & Wellness",
-    short: "Cognitive & Wellness",
+    title: "Neuro & Signalling",
+    short: "Neuro",
     cap: "var(--color-cap-peach)",
-    blurb: "Nootropic, sleep, libido & hormonal-balance peptides.",
+    blurb: "Neuropeptides and signalling peptides studied in vitro for CNS and endocrine-pathway activity.",
   },
 };
 
