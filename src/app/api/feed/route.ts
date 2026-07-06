@@ -43,7 +43,12 @@ function buildFeed(): string {
   const items: string[] = [];
 
   for (const product of PRODUCTS) {
-    const formLabel = product.form === "vial" ? "Vial" : "Injection Pen";
+    // Feed advertises vials only. Pre-filled injection pens are intentionally
+    // excluded (vials read as research materials; pens read as finished
+    // products). To advertise both, remove this guard.
+    if (product.form !== "vial") continue;
+
+    const formLabel = "Vial";
 
     for (const variant of product.variants) {
       const id = `${product.id}-${slugify(variant.label)}`;
