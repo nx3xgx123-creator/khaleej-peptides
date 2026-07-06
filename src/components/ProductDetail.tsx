@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Product, FOCUS_META } from "@/lib/products";
+import { Product } from "@/lib/products";
 import { useStore } from "@/lib/store";
 import { VialThumb } from "./VialThumb";
 import { ProductImage } from "./ProductImage";
@@ -15,6 +15,10 @@ import {
   PenIcon,
   VialIcon,
 } from "./icons";
+
+// Standard research-peptide storage — shown in the bullets and the spec table.
+const STORAGE_LABEL = "Store lyophilised at −20 °C, protect from light";
+const STORAGE_SPEC = "−20 °C, protect from light";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const { addToCart, fmt, setCartOpen } = useStore();
@@ -122,29 +126,46 @@ export default function ProductDetail({ product }: { product: Product }) {
         {/* ===== Right: info ===== */}
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            {product.focus.map((f) => (
-              <Link
-                key={f}
-                href={`/shop?focus=${f}`}
-                className="inline-flex items-center gap-1.5 rounded-full bg-blush px-3 py-1 text-[0.68rem] font-medium text-plum hover:bg-blush-deep"
-              >
-                <span className="h-2 w-2 rounded-full" style={{ background: FOCUS_META[f].cap }} />
-                {FOCUS_META[f].short}
-              </Link>
-            ))}
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blush px-3 py-1 text-[0.68rem] font-medium uppercase tracking-wider text-plum">
+              <span className="h-2 w-2 rounded-full" style={{ background: product.cap }} />
+              {product.category}
+            </span>
           </div>
 
           <h1 className="font-display mt-4 text-4xl font-medium leading-tight text-plum-deep sm:text-5xl">
             {product.name}
           </h1>
           {product.subtitle && <p className="mt-1 text-base text-ink-soft">{product.subtitle}</p>}
-          <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-ink-soft">{product.description}</p>
+          <p className="mt-4 text-sm leading-relaxed text-ink-soft">{product.mechanism}</p>
+
+          {/* Factual, research-framed bullets */}
+          <ul className="mt-5 space-y-2 text-sm text-ink-soft">
+            {[
+              product.summary,
+              `≥ ${product.purity} purity (HPLC)`,
+              STORAGE_LABEL,
+              product.form === "vial"
+                ? "Lyophilised powder, single sealed vial"
+                : "Pre-filled injection pen",
+            ].map((b) => (
+              <li key={b} className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-rosegold-deep" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* RUO disclaimer directly under the bullets — identical on every product */}
+          <p className="mt-4 text-xs italic leading-relaxed text-ink-soft">
+            For laboratory research use only. Not for human consumption, therapeutic use,
+            diagnostic application, or veterinary use.
+          </p>
 
           {/* Active dosage banner */}
           <div className="mt-6 flex items-center justify-between rounded-xl border border-rosegold-soft bg-blush px-5 py-3">
             <div>
               <span className="text-[0.65rem] uppercase tracking-wider text-rosegold-deep">
-                Active Dosage
+                Amount
               </span>
               <p className="font-display text-2xl font-semibold text-plum-deep">{variant.label}</p>
             </div>
@@ -157,7 +178,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           {/* Variant selector */}
           <div className="mt-6">
             <span className="text-xs font-bold uppercase tracking-wider text-plum-deep">
-              Select dosage
+              Select size
             </span>
             <div className="mt-3 flex flex-wrap gap-2">
               {product.variants.map((v) => (
@@ -247,24 +268,29 @@ export default function ProductDetail({ product }: { product: Product }) {
               <table className="w-full border-collapse text-sm">
                 <tbody>
                   {[
+                    ["CAS", product.molecular.cas],
+                    ["Molecular mass", product.molecular.weight],
+                    ["Molecular formula", product.molecular.formula],
                     ["Sequence", product.molecular.sequence],
-                    ["Molecular Formula", product.molecular.formula],
-                    ["Molecular Weight", product.molecular.weight],
-                    ["CAS Number", product.molecular.cas],
-                    ["Form", product.form === "vial" ? "Lyophilised powder (vial)" : "Reconstituted injection pen"],
+                    ["Form", product.form === "vial" ? "Lyophilised powder, single sealed vial" : "Pre-filled injection pen"],
                     ["Purity", `≥ ${product.purity}`],
+                    ["Storage", STORAGE_SPEC],
+                    ["COA", "Available on request"],
                   ].map(([k, v]) => (
                     <tr key={k} className="border-b border-line">
                       <td className="w-48 py-3 pr-4 align-top text-xs font-bold uppercase tracking-wider text-plum-deep">
                         {k}
                       </td>
                       <td className="py-3 font-mono text-[0.82rem] text-ink">
-                        {v || <span className="font-sans italic text-ink-soft">Available on request</span>}
+                        {v || <span className="font-sans text-ink-soft">—</span>}
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <p className="mt-4 text-xs text-ink-soft">
+                Independently third-party tested · COA available on request.
+              </p>
             </div>
           ) : (
             <div className="grid max-w-4xl gap-6 sm:grid-cols-2">
@@ -292,6 +318,19 @@ export default function ProductDetail({ product }: { product: Product }) {
             </div>
           )}
         </div>
+      </div>
+
+      {/* ===== Research-Use-Only disclaimer (persistent, shown on every product) ===== */}
+      <div className="mt-12 rounded-2xl border border-line bg-mist/40 px-6 py-5">
+        <p className="text-xs font-bold uppercase tracking-wider text-plum-deep">
+          Research Use Only
+        </p>
+        <p className="mt-2 max-w-3xl text-xs leading-relaxed text-ink-soft">
+          This product is intended for laboratory research use only. It is not a drug, food, or
+          cosmetic, and is not intended for human or animal use, diagnosis, treatment, cure, or
+          prevention of any disease. By purchasing, you confirm you are a qualified researcher or
+          institution acquiring this material for lawful research purposes.
+        </p>
       </div>
     </div>
   );

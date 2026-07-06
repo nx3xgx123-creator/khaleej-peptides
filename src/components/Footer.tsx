@@ -63,9 +63,12 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <p className="rounded-xl bg-white/70 px-4 py-3 text-center text-[0.7rem] leading-relaxed text-ink-soft">
-            <strong className="text-ink">Research use only.</strong> All products are sold
-            strictly for laboratory and research purposes and are not intended for human
-            consumption. Nothing on this site constitutes medical advice.
+            <strong className="text-ink">For Laboratory Research Use Only</strong> — All Khaleej
+            Peptides products are intended for in vitro laboratory research and are not for human
+            consumption, therapeutic, diagnostic, or veterinary use.
+          </p>
+          <p className="mt-2 text-center text-[0.7rem] leading-relaxed text-ink-soft">
+            Shipped from the United Arab Emirates.
           </p>
           <p className="mt-4 text-center text-xs text-ink-soft/70">
             © {new Date().getFullYear()} Khaleej Peptides · Premium Research Peptides · UAE.

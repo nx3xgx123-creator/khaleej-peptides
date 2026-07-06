@@ -15,10 +15,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const product = getProduct(id);
-  if (!product) return { title: "Not found — Khaleej Peptides" };
+  if (!product) return { title: "Not found | Khaleej Peptides" };
+  const titleTag = `${product.name} | Khaleej Peptides`;
   return {
-    title: `${product.name} — Khaleej Peptides`,
-    description: product.summary,
+    title: titleTag,
+    description: product.mechanism,
+    openGraph: {
+      title: product.mechanism,
+      description: product.mechanism,
+    },
   };
 }
 
