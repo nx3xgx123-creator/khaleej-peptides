@@ -49,9 +49,6 @@ export default function Home() {
                 Shop Our Catalog
                 <ArrowRight width={18} height={18} />
               </Link>
-              <Link href="/tracker" className="btn-ghost text-sm">
-                Cycle Tracker
-              </Link>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
               {[

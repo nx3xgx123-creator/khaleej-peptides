@@ -38,10 +38,6 @@ export default function Header() {
             Shop All
           </Link>
 
-          <Link href="/tracker" className="nav-link rounded-full px-3 py-2 text-sm font-medium text-ink transition-colors hover:text-plum">
-            Cycle Tracker
-          </Link>
-
           <div ref={catRef} className="relative">
             <button
               onClick={() => setCatOpen((o) => !o)}
@@ -112,9 +108,6 @@ export default function Header() {
           </div>
           <Link href="/shop" onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink hover:bg-blush">
             Shop All
-          </Link>
-          <Link href="/tracker" onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink hover:bg-blush">
-            Cycle Tracker
           </Link>
           <div className="mt-1 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-ink-soft">Categories</div>
           {FOCUS_KEYS.map((k) => (

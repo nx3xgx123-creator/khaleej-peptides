@@ -38,7 +38,6 @@ export default function Footer() {
           <h4 className="eyebrow text-plum-deep">Explore</h4>
           <ul className="mt-4 space-y-2.5">
             <li><Link href="/shop" className="text-sm text-ink-soft hover:text-plum">Shop All</Link></li>
-            <li><Link href="/tracker" className="text-sm text-ink-soft hover:text-plum">Cycle Tracker</Link></li>
           </ul>
         </div>
 
