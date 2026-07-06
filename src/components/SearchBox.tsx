@@ -20,7 +20,7 @@ export default function SearchBox({ compact = false }: { compact?: boolean }) {
 
   const results = q.trim()
     ? PRODUCTS.filter((p) =>
-        (p.name + " " + (p.subtitle ?? "") + " " + p.goals.join(" "))
+        (p.name + " " + (p.subtitle ?? "") + " " + p.summary)
           .toLowerCase()
           .includes(q.toLowerCase())
       ).slice(0, 6)

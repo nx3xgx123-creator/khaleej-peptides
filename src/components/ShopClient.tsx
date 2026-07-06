@@ -6,7 +6,6 @@ import {
   FOCUS_META,
   Focus,
   Form,
-  ALL_GOALS,
   fromPrice,
 } from "@/lib/products";
 import ProductCard from "./ProductCard";
@@ -23,7 +22,6 @@ type Sort = "featured" | "low" | "high" | "az";
 export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
   const [forms, setForms] = useState<Form[]>([]);
   const [focuses, setFocuses] = useState<Focus[]>(initialFocus ? [initialFocus] : []);
-  const [goals, setGoals] = useState<string[]>([]);
   const [sort, setSort] = useState<Sort>("featured");
   const [mobileFilters, setMobileFilters] = useState(false);
 
@@ -34,7 +32,6 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
     let list = PRODUCTS.filter((p) => {
       if (forms.length && !forms.includes(p.form)) return false;
       if (focuses.length && !p.focus.some((f) => focuses.includes(f))) return false;
-      if (goals.length && !p.goals.some((g) => goals.includes(g))) return false;
       return true;
     });
     list = [...list];
@@ -43,9 +40,9 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
     else if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
     else list.sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
     return list;
-  }, [forms, focuses, goals, sort]);
+  }, [forms, focuses, sort]);
 
-  const activeCount = forms.length + focuses.length + goals.length;
+  const activeCount = forms.length + focuses.length;
 
   const FilterPanel = (
     <div className="space-y-7">
@@ -72,30 +69,11 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
         ))}
       </FilterGroup>
 
-      <FilterGroup title="Treatment Goal">
-        <div className="flex flex-wrap gap-1.5">
-          {ALL_GOALS.map((g) => (
-            <button
-              key={g}
-              onClick={() => toggle(goals, setGoals, g)}
-              className={`rounded-full border px-2.5 py-1 text-[0.7rem] font-medium transition-colors ${
-                goals.includes(g)
-                  ? "border-plum bg-plum text-white"
-                  : "border-line text-ink-soft hover:border-rosegold"
-              }`}
-            >
-              {g}
-            </button>
-          ))}
-        </div>
-      </FilterGroup>
-
       {activeCount > 0 && (
         <button
           onClick={() => {
             setForms([]);
             setFocuses([]);
-            setGoals([]);
           }}
           className="text-xs font-semibold text-plum underline-offset-4 hover:underline"
         >
@@ -156,7 +134,6 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
                 onClick={() => {
                   setForms([]);
                   setFocuses([]);
-                  setGoals([]);
                 }}
                 className="btn-ghost text-sm"
               >

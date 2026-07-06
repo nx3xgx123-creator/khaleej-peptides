@@ -79,8 +79,6 @@ export interface Product {
   mechanism: string;
   /** storefront category tag, e.g. "peptides" */
   category: string;
-  /** treatment goals / tags used by filters */
-  goals: string[];
   variants: Variant[];
   molecular: Molecular;
   purity: string;
@@ -109,7 +107,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Retatrutide, 99.4% purity, for laboratory research use. A synthetic peptide investigated in vitro and in animal models for agonist activity at GLP-1, GIP, and glucagon receptors.",
-    goals: ["Fat Loss", "Metabolic", "Appetite Signalling"],
     variants: [
       { label: "10 mg", mg: 10, price: 650, image: "/products/retatrutide-10mg.png" },
       { label: "20 mg", mg: 20, price: 950, image: "/products/retatrutide-20mg.png" },
@@ -131,7 +128,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Tirzepatide, 99.8% purity, for laboratory research use. A synthetic peptide studied in animal models for dual agonist activity at GIP and GLP-1 receptors.",
-    goals: ["Fat Loss", "Metabolic", "Glucose Regulation"],
     variants: [
       { label: "10 mg", mg: 10, price: 650, image: "/products/tirzepatide-10mg.png" },
       { label: "20 mg", mg: 20, price: 950, image: "/products/tirzepatide-20mg.png" },
@@ -154,7 +150,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Retatrutide + Cagrilintide, 99% purity, for laboratory research use. A research blend of a GLP-1/GIP/glucagon triple-agonist peptide and a long-acting amylin-analogue peptide, investigated in vitro for incretin- and amylin-receptor activity.",
-    goals: ["Fat Loss", "Metabolic", "Satiety"],
     variants: [
       { label: "30 mg + 5 mg", mg: 35, price: 1250, image: "/products/retatrutide-cagrilintide-30mg-5mg.png" },
       { label: "40 mg + 10 mg", mg: 50, price: 1550, image: "/products/retatrutide-cagrilintide-40mg-10mg.png" },
@@ -173,7 +168,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "CJC-1295 No DAC + Ipamorelin, 99% purity, for laboratory research use. A research blend of a GHRH-analogue peptide and a selective ghrelin-receptor agonist, studied in vitro for growth-hormone secretagogue activity.",
-    goals: ["Muscle Growth", "Recovery", "GH Secretion", "Sleep"],
     variants: [
       { label: "10 mg (5+5)", mg: 10, price: 750, image: "/products/cjc-ipamorelin-10mg.png" },
       { label: "20 mg (10+10)", mg: 20, price: 950, image: "/products/cjc-ipamorelin-20mg.png" },
@@ -194,7 +188,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "CJC-1295 No DAC, 99% purity, for laboratory research use. A synthetic GHRH-analogue peptide investigated in vitro for growth-hormone-releasing-hormone receptor signalling.",
-    goals: ["Muscle Growth", "Recovery", "GH Secretion"],
     variants: [
       { label: "10 mg", mg: 10, price: 650, image: "/products/cjc-1295-10mg.png" },
       { label: "20 mg", mg: 20, price: 900, image: "/products/cjc-1295-20mg.png" },
@@ -212,7 +205,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Ipamorelin, 99% purity, for laboratory research use. A synthetic pentapeptide studied in vitro for selective agonist activity at the ghrelin / GH-secretagogue receptor.",
-    goals: ["Muscle Growth", "Recovery", "GH Secretion"],
     variants: [
       { label: "10 mg", mg: 10, price: 700, image: "/products/ipamorelin-10mg.png" },
       { label: "20 mg", mg: 20, price: 950, image: "/products/ipamorelin-20mg.png" },
@@ -231,7 +223,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Tesamorelin, 99.6% purity, for laboratory research use. A synthetic GHRH-analogue peptide investigated in animal models for growth-hormone-axis signalling.",
-    goals: ["Visceral Fat", "Metabolic", "GH Secretion"],
     variants: [
       { label: "20 mg", mg: 20, price: 900, image: "/products/tesamorelin-20mg.png" },
       { label: "40 mg", mg: 40, price: 1350, image: "/products/tesamorelin-40mg.png" },
@@ -250,7 +241,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "AOD-9604, 99% purity, for laboratory research use. A synthetic fragment of human growth hormone (176-191) investigated in vitro and in animal models for its role in lipid-metabolism pathways.",
-    goals: ["Fat Loss", "Metabolic", "Lipolysis"],
     variants: [
       { label: "10 mg", mg: 10, price: 700, image: "/products/aod-9604-10mg.png" },
       { label: "20 mg", mg: 20, price: 1050, image: "/products/aod-9604-20mg.png" },
@@ -270,7 +260,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "IGF-1 LR3, 99% purity, for laboratory research use. A recombinant IGF-1 analogue studied in vitro for IGF-1 receptor signalling and cellular proliferation.",
-    goals: ["Muscle Growth", "Cellular Proliferation"],
     variants: [{ label: "1 mg", mg: 1, price: 1050, image: "/products/igf-1-lr3-1mg.png" }],
     molecular: { formula: "C400H625N111O115S9", weight: "9117.6 g/mol", cas: "946870-92-4" },
     purity: "99%+",
@@ -286,7 +275,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "KLOW, 99% purity, for laboratory research use. A research blend of GHK-Cu, BPC-157, TB-500, and KPV investigated in vitro for roles in tissue-remodelling and extracellular-matrix pathways.",
-    goals: ["Recovery", "Skin", "Anti-Inflammatory", "Healing"],
     variants: [{ label: "80 mg", mg: 80, price: 1050, image: "/products/klow-80mg.png" }],
     molecular: {},
     purity: "99%+",
@@ -303,7 +291,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "GLOW, 99% purity, for laboratory research use. A research blend of GHK-Cu, BPC-157, and TB-500 studied in vitro for roles in extracellular-matrix and angiogenesis pathways.",
-    goals: ["Recovery", "Skin", "Healing"],
     variants: [{ label: "70 mg", mg: 70, price: 950, image: "/products/glow-70mg.png" }],
     molecular: {},
     purity: "99%+",
@@ -319,7 +306,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "GHK-Cu, 99.8% purity, for laboratory research use. A copper-binding tripeptide investigated in vitro for its role in collagen and extracellular-matrix gene expression.",
-    goals: ["Skin", "Hair", "Healing", "Anti-Aging"],
     variants: [
       { label: "50 mg", mg: 50, price: 650, image: "/products/ghk-cu-50mg.png" },
       { label: "100 mg", mg: 100, price: 800, image: "/products/ghk-cu-100mg.png" },
@@ -338,7 +324,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "BPC-157, 99.3% purity, for laboratory research use. A synthetic pentadecapeptide investigated in vitro and in animal models for its role in angiogenesis and fibroblast migration.",
-    goals: ["Recovery", "Healing", "Gut Health", "Joint"],
     variants: [{ label: "10 mg", mg: 10, price: 650, image: "/products/bpc-157-10mg.png" }],
     molecular: { sequence: "GEPPPGKPADDAGLV", formula: "C62H98N16O22", weight: "1419.5 g/mol", cas: "137525-51-0" },
     purity: "99.3%",
@@ -355,7 +340,6 @@ export const PRODUCTS: Product[] = [
     category: "research compound",
     mechanism:
       "NAD+, 99% purity, for laboratory research use. A pyridine-dinucleotide coenzyme studied in vitro for its role in redox reactions and sirtuin/PARP-dependent pathways.",
-    goals: ["Longevity", "Energy", "Cellular Repair", "Anti-Aging"],
     variants: [
       { label: "500 mg", mg: 500, price: 850, image: "/products/nad-plus-500mg.png" },
       { label: "1000 mg", mg: 1000, price: 1250, image: "/products/nad-plus-1000mg.png" },
@@ -374,7 +358,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Wolverine Stack, 99% purity, for laboratory research use. A research blend of BPC-157 and TB-500 peptides investigated in vitro for roles in angiogenesis and actin-regulation pathways.",
-    goals: ["Recovery", "Healing", "Joint", "Muscle Growth"],
     variants: [
       { label: "10 mg", mg: 10, price: 750, image: "/products/wolverine-10mg.png" },
       { label: "20 mg", mg: 20, price: 1050, image: "/products/wolverine-20mg.png" },
@@ -393,7 +376,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "PT-141 (Bremelanotide), 99% purity, for laboratory research use. A cyclic heptapeptide studied in animal models for its role in melanocortin-receptor signalling.",
-    goals: ["Libido", "Wellness"],
     variants: [
       { label: "10 mg", mg: 10, price: 650, image: "/products/pt-141-10mg.png" },
       { label: "40 mg", mg: 40, price: 1250, image: "/products/pt-141-40mg.png" },
@@ -411,7 +393,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Kisspeptin-10, 99% purity, for laboratory research use. A synthetic decapeptide investigated in vitro and in animal models for KISS1R receptor signalling and GnRH regulation.",
-    goals: ["Hormonal Balance", "Fertility", "Wellness"],
     variants: [
       { label: "10 mg", mg: 10, price: 650, image: "/products/kisspeptin-10mg.png" },
       { label: "20 mg", mg: 20, price: 1000, image: "/products/kisspeptin-20mg.png" },
@@ -430,7 +411,6 @@ export const PRODUCTS: Product[] = [
     category: "research compound",
     mechanism:
       "SLU-PP-223, 99% purity, for laboratory research use. A synthetic small molecule investigated in vitro for pan-agonist activity at estrogen-related receptors (ERR-alpha / beta / gamma).",
-    goals: ["Metabolic", "Energy", "Fat Loss"],
     variants: [{ label: "10 mg", mg: 10, price: 750, image: "/products/slu-pp-223-10mg.png" }],
     molecular: {},
     purity: "99%+",
@@ -446,7 +426,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "SS-31 (Elamipretide), 99% purity, for laboratory research use. A synthetic tetrapeptide investigated in vitro for cardiolipin binding and mitochondrial-membrane stabilisation.",
-    goals: ["Longevity", "Anti-Aging", "Energy", "Cellular Repair"],
     variants: [
       { label: "20 mg", mg: 20, price: 750, image: "/products/ss-31-20mg.png" },
       { label: "50 mg", mg: 50, price: 1100, image: "/products/ss-31-50mg.png" },
@@ -465,7 +444,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "MOTS-C, 99.9% purity, for laboratory research use. A mitochondrial-derived peptide studied in vitro and in animal models for its role in AMPK-pathway and metabolic signalling.",
-    goals: ["Metabolic", "Energy", "Longevity", "Insulin Sensitivity"],
     variants: [
       { label: "20 mg", mg: 20, price: 750, image: "/products/mots-c-20mg.png" },
       { label: "40 mg", mg: 40, price: 1050, image: "/products/mots-c-40mg.png" },
@@ -484,7 +462,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Selank, 99% purity, for laboratory research use. A synthetic heptapeptide analogue of tuftsin investigated in animal models for GABAergic and BDNF-related signalling.",
-    goals: ["Cognition", "Wellness", "Mood"],
     variants: [{ label: "10 mg", mg: 10, price: 750, image: "/products/selank-10mg.png" }],
     molecular: { sequence: "Thr-Lys-Pro-Arg-Pro-Gly-Pro", formula: "C33H57N11O9", weight: "751.9 g/mol", cas: "129954-34-3" },
     purity: "99%+",
@@ -500,7 +477,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "DSIP, 99% purity, for laboratory research use. A naturally occurring nonapeptide investigated in animal models for sleep-architecture and neuroendocrine signalling.",
-    goals: ["Sleep", "Recovery", "Wellness"],
     variants: [{ label: "10 mg", mg: 10, price: 750, image: "/products/dsip-10mg.png" }],
     molecular: { sequence: "Trp-Ala-Gly-Gly-Asp-Ala-Ser-Gly-Glu", formula: "C35H48N10O15", weight: "848.8 g/mol", cas: "62568-57-4" },
     purity: "99%+",
@@ -515,7 +491,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Semax, 99% purity, for laboratory research use. A synthetic ACTH(4-10)-analogue heptapeptide studied in vitro and in animal models for BDNF expression and neurotrophic signalling.",
-    goals: ["Cognition", "Wellness", "Neuroprotection"],
     variants: [{ label: "10 mg", mg: 10, price: 750, image: "/products/semax-10mg.png" }],
     molecular: { sequence: "Met-Glu-His-Phe-Pro-Gly-Pro", formula: "C37H51N9O10S", weight: "813.9 g/mol", cas: "80714-61-0" },
     purity: "99%+",
@@ -533,7 +508,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Retatrutide, 99.4% purity, for laboratory research use. A synthetic peptide investigated in vitro and in animal models for agonist activity at GLP-1, GIP, and glucagon receptors.",
-    goals: ["Fat Loss", "Metabolic", "Appetite Signalling"],
     variants: [
       { label: "60 mg", mg: 60, price: 1250, image: "/products/retatrutide-vial-60mg.png" },
     ],
@@ -551,7 +525,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Tesamorelin, 99.6% purity, for laboratory research use. A synthetic GHRH-analogue peptide investigated in animal models for growth-hormone-axis signalling.",
-    goals: ["Visceral Fat", "Metabolic", "GH Secretion"],
     variants: [{ label: "20 mg", mg: 20, price: 600, image: "/products/tesamorelin-vial-20mg.png" }],
     molecular: { formula: "C221H366N72O67S", weight: "5135.9 g/mol", cas: "218949-48-5" },
     purity: "99.6%",
@@ -567,7 +540,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "CJC-1295 + Ipamorelin, 99% purity, for laboratory research use. A research blend of a GHRH-analogue peptide and a selective ghrelin-receptor agonist, studied in vitro for growth-hormone secretagogue activity.",
-    goals: ["Muscle Growth", "Recovery", "GH Secretion", "Sleep"],
     variants: [{ label: "20 mg", mg: 20, price: 650, image: "/products/cjc-ipamorelin-vial-20mg.png" }],
     molecular: { cas: "863288-34-0 / 170851-70-4" },
     purity: "99%+",
@@ -583,7 +555,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "MOTS-C, 99.9% purity, for laboratory research use. A mitochondrial-derived peptide studied in vitro and in animal models for its role in AMPK-pathway and metabolic signalling.",
-    goals: ["Metabolic", "Energy", "Longevity", "Insulin Sensitivity"],
     variants: [{ label: "40 mg", mg: 40, price: 750, image: "/products/mots-c-vial-40mg.png" }],
     molecular: { sequence: "MRWQEMGYIFYPRKLR", formula: "C101H152N28O22S2", weight: "2174.6 g/mol", cas: "1627580-64-6" },
     purity: "99.9%",
@@ -599,7 +570,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "GHK-Cu, 99.8% purity, for laboratory research use. A copper-binding tripeptide investigated in vitro for its role in collagen and extracellular-matrix gene expression.",
-    goals: ["Skin", "Hair", "Healing", "Anti-Aging"],
     variants: [{ label: "100 mg", mg: 100, price: 550, image: "/products/ghk-cu-vial-100mg.png" }],
     molecular: { sequence: "Gly-His-Lys (Cu²⁺)", formula: "C14H24N6O4·Cu", weight: "403.9 g/mol", cas: "49557-75-7" },
     purity: "99.8%",
@@ -615,7 +585,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "Wolverine Stack, 99% purity, for laboratory research use. A research blend of BPC-157 and TB-500 peptides investigated in vitro for roles in angiogenesis and actin-regulation pathways.",
-    goals: ["Recovery", "Healing", "Joint", "Muscle Growth"],
     variants: [{ label: "20 mg", mg: 20, price: 650, image: "/products/wolverine-vial-20mg.png" }],
     molecular: { cas: "137525-51-0 / 77591-33-4" },
     purity: "99%+",
@@ -631,7 +600,6 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "GLOW, 99% purity, for laboratory research use. A research blend of GHK-Cu, BPC-157, and TB-500 studied in vitro for roles in extracellular-matrix and angiogenesis pathways.",
-    goals: ["Recovery", "Skin", "Healing"],
     variants: [{ label: "70 mg", mg: 70, price: 750, image: "/products/glow-vial-70mg.png" }],
     molecular: {},
     purity: "99%+",
@@ -647,16 +615,12 @@ export const PRODUCTS: Product[] = [
     category: "peptides",
     mechanism:
       "KLOW, 99% purity, for laboratory research use. A research blend of GHK-Cu, BPC-157, TB-500, and KPV investigated in vitro for roles in tissue-remodelling and extracellular-matrix pathways.",
-    goals: ["Recovery", "Skin", "Anti-Inflammatory", "Healing"],
     variants: [{ label: "80 mg", mg: 80, price: 800, image: "/products/klow-vial-80mg.png" }],
     molecular: {},
     purity: "99%+",
   },
 ];
 
-export const ALL_GOALS = Array.from(
-  new Set(PRODUCTS.flatMap((p) => p.goals))
-).sort();
 
 export function getProduct(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);
