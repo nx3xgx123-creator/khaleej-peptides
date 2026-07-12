@@ -23,6 +23,19 @@ export default function CartDrawer() {
   if (!cartOpen) return null;
 
   function orderNow() {
+    // Google Ads conversion — "WhatsApp Cart Order" (fires on order-intent click).
+    try {
+      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      if (typeof gtag === "function") {
+        gtag("event", "conversion", {
+          send_to: "AW-18299175469/6g3WCKvmnc8cEK2E3ZVE",
+          value: subtotal ?? 0,
+          currency: "AED",
+        });
+      }
+    } catch (e) {
+      console.error("WhatsApp conversion tracking error", e);
+    }
     const url = buildWhatsAppOrder(cart);
     window.open(url, "_blank");
   }
