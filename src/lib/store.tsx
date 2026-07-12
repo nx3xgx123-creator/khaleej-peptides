@@ -144,7 +144,7 @@ export function useStore() {
 }
 
 /** Build a WhatsApp order link from cart lines */
-export function buildWhatsAppOrder(cart: CartLine[]): string {
+export function buildWhatsAppOrder(cart: CartLine[], orderRef?: string): string {
   const subtotal = cart.reduce((s, l) => s + l.unitPrice * l.qty, 0);
   const lines: string[] = [
     "Hi Khaleej Peptides! I'd like to place the following order:",
@@ -155,6 +155,7 @@ export function buildWhatsAppOrder(cart: CartLine[]): string {
     ),
     "",
     `Total: ${formatPrice(subtotal)}`,
+    ...(orderRef ? ["", `Order Ref: ${orderRef}`] : []),
     "",
     "Please confirm availability and next steps. Thank you!",
   ];

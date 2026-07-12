@@ -23,20 +23,49 @@ export default function CartDrawer() {
   if (!cartOpen) return null;
 
   function orderNow() {
-    // Google Ads conversion — "WhatsApp Cart Order" (fires on order-intent click).
+    // A real, unique reference for this order. We generate it, send it in the
+    // WhatsApp message (so it can be reconciled), and use it as the Google Ads
+    // transaction_id so repeat clicks of the same order de-dupe.
+    const signature = cart
+      .map((l) => `${l.productId}:${l.variantLabel}:${l.qty}`)
+      .join("|");
+
+    let fired: Record<string, string> = {};
     try {
-      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-      if (typeof gtag === "function") {
-        gtag("event", "conversion", {
-          send_to: "AW-18299175469/6g3WCKvmnc8cEK2E3ZVE",
-          value: subtotal ?? 0,
-          currency: "AED",
-        });
+      fired = JSON.parse(sessionStorage.getItem("kp_conv_fired") || "{}");
+    } catch {}
+
+    const alreadyFired = Boolean(fired[signature]);
+    const orderRef =
+      fired[signature] ??
+      `KP-${
+        typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID()
+          : Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
+      }`;
+
+    // "WhatsApp Cart Order" (Purchase) conversion — fire exactly once per order.
+    // This is a click handler, so refresh / back-button never re-fire it; the
+    // sessionStorage guard prevents a repeat click of the same cart counting twice.
+    if (!alreadyFired) {
+      try {
+        const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-18299175469/1NwMCN6jn88cEK2E3ZVE",
+            value: subtotal ?? 0,
+            currency: "AED",
+            transaction_id: orderRef,
+          });
+        }
+        fired[signature] = orderRef;
+        sessionStorage.setItem("kp_conv_fired", JSON.stringify(fired));
+      } catch (e) {
+        console.error("WhatsApp conversion tracking error", e);
       }
-    } catch (e) {
-      console.error("WhatsApp conversion tracking error", e);
     }
-    const url = buildWhatsAppOrder(cart);
+
+    const url = buildWhatsAppOrder(cart, orderRef);
     window.open(url, "_blank");
   }
 
