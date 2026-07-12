@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/lib/store";
@@ -39,6 +40,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
+        {/* Google tag (gtag.js) — Google Ads AW-18299175469 (site-wide, once per page) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18299175469"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18299175469');
+          `}
+        </Script>
         <StoreProvider>
           <AgeGate />
           <Header />
