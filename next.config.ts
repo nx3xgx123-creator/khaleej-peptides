@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      // Tirzepatide removed from the catalogue — redirect its old product URL.
+      {
+        source: "/shop/tirzepatide",
+        destination: "/shop",
+        permanent: true,
+      },
     ];
   },
 };

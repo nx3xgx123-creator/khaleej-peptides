@@ -119,27 +119,6 @@ export const PRODUCTS: Product[] = [
     featured: true,
   },
   {
-    id: "tirzepatide",
-    name: "Tirzepatide",
-    form: "pen",
-    focus: ["weightloss"],
-    cap: CAP.gold,
-    summary: "Synthetic dual-agonist peptide (GIP / GLP-1 receptors)",
-    category: "peptides",
-    mechanism:
-      "Tirzepatide, 99.8% purity, for laboratory research use. A synthetic peptide studied in animal models for dual agonist activity at GIP and GLP-1 receptors.",
-    variants: [
-      { label: "10 mg", mg: 10, price: 650, image: "/products/tirzepatide-10mg.png" },
-      { label: "20 mg", mg: 20, price: 950, image: "/products/tirzepatide-20mg.png" },
-      { label: "30 mg", mg: 30, price: 1150, image: "/products/tirzepatide-30mg.png" },
-      { label: "40 mg", mg: 40, price: 1450, image: "/products/tirzepatide-40mg.png" },
-      { label: "60 mg", mg: 60, price: 1700, image: "/products/tirzepatide-60mg.png" },
-    ],
-    molecular: { formula: "C225H348N48O68", weight: "4813.5 g/mol", cas: "2023788-19-2" },
-    purity: "99.8%",
-    featured: true,
-  },
-  {
     id: "retatrutide-cagrilintide",
     name: "Retatrutide + Cagrilintide",
     subtitle: "Triple agonist + amylin analogue blend",

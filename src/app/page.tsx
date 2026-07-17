@@ -7,7 +7,7 @@ import { ArrowRight } from "@/components/icons";
 import { DnaMark } from "@/components/Logo";
 
 const FOCUS_CARDS: { key: Focus; featured: string[] }[] = [
-  { key: "weightloss", featured: ["Retatrutide", "Tirzepatide", "AOD-9604"] },
+  { key: "weightloss", featured: ["Retatrutide", "AOD-9604", "Kisspeptin-10"] },
   { key: "growth", featured: ["CJC + Ipamorelin", "IGF-1 LR3", "Ipamorelin"] },
   { key: "recovery", featured: ["BPC-157", "KLOW", "Wolverine Stack"] },
   { key: "antiaging", featured: ["NAD+", "MOTS-C", "SS-31"] },
