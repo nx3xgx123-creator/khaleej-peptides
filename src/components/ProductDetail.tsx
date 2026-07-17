@@ -27,6 +27,8 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [tab, setTab] = useState<"profile" | "qa">("profile");
   const [added, setAdded] = useState(false);
 
+  const mainImage = variant.image ?? product.images?.[0];
+
   const lineTotal = variant.price * qty;
 
   function handleAdd() {
@@ -79,11 +81,11 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-blush via-white to-blush-deep">
             <span className="absolute inset-x-0 top-0 h-1.5" style={{ background: product.cap }} />
             <div className="flex h-full w-full items-center justify-center p-6 transition-transform duration-500 ease-out">
-              {product.form === "vial" ? (
+              {product.form === "vial" && !mainImage ? (
                 <VialThumb cap={product.cap} form={product.form} size={220} />
               ) : (
                 <ProductImage
-                  src={undefined}
+                  src={mainImage}
                   name={product.name}
                   dose={variant.label}
                   accent={product.cap}
@@ -109,9 +111,8 @@ export default function ProductDetail({ product }: { product: Product }) {
                   aria-label={`${product.name} ${v.label}`}
                 >
                   <ProductImage
-                    src={undefined}
+                    src={v.image ?? product.images?.[0]}
                     name={product.name}
-                    dose={v.label}
                     accent={product.cap}
                     penWidth={150}
                     imgClassName="max-h-full w-auto object-contain"

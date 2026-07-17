@@ -13,6 +13,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const [added, setAdded] = useState(false);
 
   const cheapest = product.variants.reduce((a, b) => (a.price <= b.price ? a : b));
+  const repImage = product.variants.find((v) => v.image)?.image ?? product.images?.[0];
 
   function quickAdd(e: React.MouseEvent) {
     e.preventDefault();
@@ -39,14 +40,14 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Thumb */}
       <div className="relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br from-blush/70 via-white to-blush-deep/40">
-        {product.form === "vial" ? (
+        {product.form === "vial" && !repImage ? (
           <div className="transition-transform duration-500 group-hover:scale-110">
             <VialThumb cap={product.cap} form={product.form} size={92} />
           </div>
         ) : (
           <div className="flex h-full w-full items-center justify-center p-2 transition-transform duration-500 ease-out group-hover:scale-[1.05]">
             <ProductImage
-              src={undefined}
+              src={repImage}
               name={product.name}
               accent={product.cap}
               penWidth={430}
