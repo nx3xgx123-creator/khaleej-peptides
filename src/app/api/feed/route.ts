@@ -73,7 +73,8 @@ function buildFeed(): string {
         [
           "    <item>",
           `      <g:id>${xmlEscape(id)}</g:id>`,
-          `      <g:mpn>${xmlEscape(id)}</g:mpn>`,
+          // Research materials have no manufacturer GTIN/MPN — declare no standard identifiers.
+          `      <g:identifier_exists>false</g:identifier_exists>`,
           `      <g:item_group_id>${xmlEscape(product.id)}</g:item_group_id>`,
           `      <title>${xmlEscape(title)}</title>`,
           `      <description>${xmlEscape(description)}</description>`,

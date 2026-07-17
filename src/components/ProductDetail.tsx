@@ -161,6 +161,15 @@ export default function ProductDetail({ product }: { product: Product }) {
             diagnostic application, or veterinary use.
           </p>
 
+          {/* Certificate of Analysis — per-product COA page */}
+          <Link
+            href={`/coa/${product.id}`}
+            className="mt-4 inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-xs font-semibold text-plum transition-colors hover:border-rosegold hover:text-rosegold-deep"
+          >
+            <FlaskIcon width={14} height={14} />
+            Certificate of Analysis (COA)
+          </Link>
+
           {/* Active dosage banner */}
           <div className="mt-6 flex items-center justify-between rounded-xl border border-rosegold-soft bg-blush px-5 py-3">
             <div>

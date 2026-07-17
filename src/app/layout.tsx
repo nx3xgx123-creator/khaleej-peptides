@@ -55,6 +55,14 @@ export default function RootLayout({
         </Script>
         <StoreProvider>
           <AgeGate />
+          {/* Research-Use-Only notice — visible above the fold on every page */}
+          <p
+            role="note"
+            className="bg-plum-deep px-4 py-1.5 text-center text-[0.68rem] font-medium leading-snug text-white"
+          >
+            Research Use Only — for laboratory research use, not for human consumption. Not
+            evaluated by any regulatory authority.
+          </p>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
