@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { formatPrice, PRODUCTS } from "./products";
 import { WHATSAPP_NUMBER } from "./constants";
+import type { CheckoutDetails } from "./checkout";
 
 export interface CartLine {
   productId: string;
@@ -143,8 +144,12 @@ export function useStore() {
   return ctx;
 }
 
-/** Build a WhatsApp order link from cart lines */
-export function buildWhatsAppOrder(cart: CartLine[], orderRef?: string): string {
+/** Build a WhatsApp order link from cart lines and the customer's details */
+export function buildWhatsAppOrder(
+  cart: CartLine[],
+  orderRef?: string,
+  details?: CheckoutDetails
+): string {
   const subtotal = cart.reduce((s, l) => s + l.unitPrice * l.qty, 0);
   const lines: string[] = [
     "Hi Khaleej Peptides! I'd like to place the following order:",
@@ -155,6 +160,16 @@ export function buildWhatsAppOrder(cart: CartLine[], orderRef?: string): string 
     ),
     "",
     `Total: ${formatPrice(subtotal)}`,
+    ...(details
+      ? [
+          "",
+          "— Delivery details —",
+          `Name: ${details.name.trim()}`,
+          `Emirate: ${details.emirate}`,
+          `Address: ${details.address.trim().replace(/\s*\n\s*/g, ", ")}`,
+          `Payment: ${details.payment}`,
+        ]
+      : []),
     ...(orderRef ? ["", `Order Ref: ${orderRef}`] : []),
     "",
     "Please confirm availability and next steps. Thank you!",

@@ -1,20 +1,40 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useStore, buildWhatsAppOrder } from "@/lib/store";
+import {
+  EMPTY_DETAILS,
+  validateCheckout,
+  type CheckoutDetails,
+  type CheckoutErrors,
+} from "@/lib/checkout";
 import { CloseIcon, MinusIcon, PlusIcon, CartIcon, WhatsAppIcon } from "./icons";
 import { VialThumb } from "./VialThumb";
+import CheckoutForm from "./CheckoutForm";
+
+const DETAILS_KEY = "kp_checkout_details";
 
 export default function CartDrawer() {
   const { cartOpen, setCartOpen, cart, fmt, subtotal, setQty, removeFromCart } = useStore();
 
-  useEffect(() => {
-    if (cartOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+  const [step, setStep] = useState<"cart" | "details">("cart");
+  // Restore previously entered details so a repeat order isn't retyped. Read
+  // lazily rather than in an effect — the drawer renders null until opened, so
+  // there is no server/client markup to mismatch.
+  const [details, setDetails] = useState<CheckoutDetails>(() => {
+    if (typeof window === "undefined") return EMPTY_DETAILS;
+    try {
+      const saved = localStorage.getItem(DETAILS_KEY);
+      return saved ? { ...EMPTY_DETAILS, ...JSON.parse(saved) } : EMPTY_DETAILS;
+    } catch {
+      return EMPTY_DETAILS;
     }
+  });
+  const [errors, setErrors] = useState<CheckoutErrors>({});
+
+  useEffect(() => {
+    document.body.style.overflow = cartOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -22,7 +42,34 @@ export default function CartDrawer() {
 
   if (!cartOpen) return null;
 
+  /** Close and rewind to the cart step, so reopening never lands mid-checkout. */
+  function closeCart() {
+    setStep("cart");
+    setErrors({});
+    setCartOpen(false);
+  }
+
+  function patchDetails(patch: Partial<CheckoutDetails>) {
+    setDetails((d) => ({ ...d, ...patch }));
+    // Clear a field's error as soon as the customer edits it.
+    setErrors((e) => {
+      const next = { ...e };
+      for (const k of Object.keys(patch)) delete next[k as keyof CheckoutErrors];
+      return next;
+    });
+  }
+
   function orderNow() {
+    const found = validateCheckout(details);
+    if (Object.keys(found).length > 0) {
+      setErrors(found);
+      return;
+    }
+
+    try {
+      localStorage.setItem(DETAILS_KEY, JSON.stringify(details));
+    } catch {}
+
     // A real, unique reference for this order. We generate it, send it in the
     // WhatsApp message (so it can be reconciled), and use it as the Google Ads
     // transaction_id so repeat clicks of the same order de-dupe.
@@ -65,7 +112,7 @@ export default function CartDrawer() {
       }
     }
 
-    const url = buildWhatsAppOrder(cart, orderRef);
+    const url = buildWhatsAppOrder(cart, orderRef, details);
     window.open(url, "_blank");
   }
 
@@ -74,7 +121,7 @@ export default function CartDrawer() {
       <div
         className="absolute inset-0 bg-plum-ink/40"
         style={{ animation: "scrim-in 0.25s ease both" }}
-        onClick={() => setCartOpen(false)}
+        onClick={closeCart}
       />
       <aside
         className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-2xl"
@@ -82,9 +129,11 @@ export default function CartDrawer() {
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-line px-6 py-5">
-          <h2 className="font-display text-2xl font-medium text-plum-deep">Your Selection</h2>
+          <h2 className="font-display text-2xl font-medium text-plum-deep">
+            {step === "cart" ? "Your Selection" : "Delivery Details"}
+          </h2>
           <button
-            onClick={() => setCartOpen(false)}
+            onClick={closeCart}
             className="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-blush"
             aria-label="Close cart"
           >
@@ -99,9 +148,13 @@ export default function CartDrawer() {
               <CartIcon width={28} height={28} />
             </div>
             <p className="text-sm text-ink-soft">Your cart is empty.</p>
-            <Link href="/shop" onClick={() => setCartOpen(false)} className="btn-ghost text-sm">
+            <Link href="/shop" onClick={closeCart} className="btn-ghost text-sm">
               Browse Catalog
             </Link>
+          </div>
+        ) : step === "details" ? (
+          <div className="flex-1 overflow-y-auto px-6 py-5">
+            <CheckoutForm details={details} errors={errors} onChange={patchDetails} />
           </div>
         ) : (
           <div className="flex-1 overflow-y-auto px-6 py-4">
@@ -116,7 +169,7 @@ export default function CartDrawer() {
                       <div>
                         <Link
                           href={`/shop/${l.productId}`}
-                          onClick={() => setCartOpen(false)}
+                          onClick={closeCart}
                           className="text-sm font-semibold text-ink hover:text-plum"
                         >
                           {l.name}
@@ -167,19 +220,38 @@ export default function CartDrawer() {
               <span className="text-sm text-ink-soft">Subtotal</span>
               <span className="font-display text-2xl font-medium text-plum-deep">{fmt(subtotal)}</span>
             </div>
-            <button
-              onClick={orderNow}
-              className="btn-primary mt-4 flex w-full items-center justify-center gap-2 text-sm"
-            >
-              <WhatsAppIcon width={18} height={18} />
-              Order via WhatsApp
-            </button>
-            <button
-              onClick={() => setCartOpen(false)}
-              className="mt-2 w-full py-2 text-center text-xs font-medium text-ink-soft hover:text-plum"
-            >
-              Continue browsing
-            </button>
+            {step === "cart" ? (
+              <>
+                <button
+                  onClick={() => setStep("details")}
+                  className="btn-primary mt-4 flex w-full items-center justify-center gap-2 text-sm"
+                >
+                  Continue to Delivery Details
+                </button>
+                <button
+                  onClick={closeCart}
+                  className="mt-2 w-full py-2 text-center text-xs font-medium text-ink-soft hover:text-plum"
+                >
+                  Continue browsing
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={orderNow}
+                  className="btn-primary mt-4 flex w-full items-center justify-center gap-2 text-sm"
+                >
+                  <WhatsAppIcon width={18} height={18} />
+                  Send Order on WhatsApp
+                </button>
+                <button
+                  onClick={() => setStep("cart")}
+                  className="mt-2 w-full py-2 text-center text-xs font-medium text-ink-soft hover:text-plum"
+                >
+                  Back to cart
+                </button>
+              </>
+            )}
           </div>
         )}
       </aside>

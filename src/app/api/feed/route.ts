@@ -13,14 +13,11 @@ const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://khaleejpeptides.com")
 const BRAND = "Khaleej Peptides";
 const GOOGLE_CATEGORY = "Business & Industrial > Science & Laboratory > Laboratory Chemicals";
 
-// Product ids excluded from the Google Merchant feed ONLY (still live on the
-// website) — removed to resolve a Healthcare & Medicines policy violation.
-const FEED_EXCLUDED_IDS = new Set<string>([
-  "wolverine-vial", // Wolverine Stack 20mg — Vial
-  "retatrutide-vial", // Retatrutide 60mg — Vial
-  "mots-c-vial", // MOTS-C 40mg — Vial
-  "klow-vial", // KLOW 80mg — Vial
-  "glow-vial", // GLOW 70mg — Vial
+// Allowlist for the Google Merchant feed: ONLY these SKU ids are advertised
+// (everything else on the website is excluded from the feed). Ids are
+// `${product.id}-${slugify(variant.label)}`.
+const FEED_INCLUDED_IDS = new Set<string>([
+  "retatrutide-10-mg", // Retatrutide 10 mg — Injection Pen
 ]);
 
 /** Escape the five XML predefined entities. */
@@ -53,16 +50,12 @@ function buildFeed(): string {
   const items: string[] = [];
 
   for (const product of PRODUCTS) {
-    // Feed advertises vials only. Pre-filled injection pens are intentionally
-    // excluded (vials read as research materials; pens read as finished
-    // products). To advertise both, remove this guard.
-    if (product.form !== "vial") continue;
-    if (FEED_EXCLUDED_IDS.has(product.id)) continue;
-
-    const formLabel = "Vial";
+    const formLabel = product.form === "vial" ? "Vial" : "Injection Pen";
 
     for (const variant of product.variants) {
       const id = `${product.id}-${slugify(variant.label)}`;
+      // Only advertise SKUs on the allowlist; skip everything else.
+      if (!FEED_INCLUDED_IDS.has(id)) continue;
       const title = toPlainText(`${product.name} ${variant.label} — ${formLabel}`);
       const description = toPlainText(product.mechanism);
       const link = `${SITE}/shop/${product.id}`;
