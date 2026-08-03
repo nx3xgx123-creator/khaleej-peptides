@@ -56,6 +56,8 @@ export interface Variant {
   price: number; // AED
   /** optional real product photo for this dose (path under /public). Falls back to vector pen if missing. */
   image?: string;
+  /** optional explicit SKU for the merchant feed. Falls back to `${product.id}-${slugify(label)}`. */
+  sku?: string;
 }
 
 export interface Molecular {
@@ -98,17 +100,17 @@ const CAP = {
 export const PRODUCTS: Product[] = [
   // ========================= INJECTION PENS =========================
   {
-    id: "retatrutide",
-    name: "Retatrutide",
+    id: "rt-10",
+    name: "GLP3 Reta",
     form: "pen",
     focus: ["weightloss"],
     cap: CAP.gold,
     summary: "Synthetic triple-agonist peptide (GLP-1 / GIP / glucagon receptors)",
     category: "peptides",
     mechanism:
-      "Retatrutide, 99.4% purity, for laboratory research use. A synthetic peptide investigated in vitro and in animal models for agonist activity at GLP-1, GIP, and glucagon receptors.",
+      "GLP3 Reta, 99.4% purity, for laboratory research use. A synthetic peptide investigated in vitro and in animal models for agonist activity at GLP-1, GIP, and glucagon receptors.",
     variants: [
-      { label: "10 mg", mg: 10, price: 650, image: "/products/retatrutide-10mg.png" },
+      { label: "10 mg", mg: 10, price: 650, image: "/products/retatrutide-10mg.png", sku: "rt-10" },
       { label: "20 mg", mg: 20, price: 950, image: "/products/retatrutide-20mg.png" },
       { label: "30 mg", mg: 30, price: 1150, image: "/products/retatrutide-30mg.png" },
       { label: "40 mg", mg: 40, price: 1450, image: "/products/retatrutide-40mg.png" },
@@ -120,7 +122,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "retatrutide-cagrilintide",
-    name: "Retatrutide + Cagrilintide",
+    name: "GLP3 Reta + Cagrilintide",
     subtitle: "Triple agonist + amylin analogue blend",
     form: "pen",
     focus: ["weightloss"],
@@ -128,7 +130,7 @@ export const PRODUCTS: Product[] = [
     summary: "Peptide research blend (triple-agonist + amylin analogue)",
     category: "peptides",
     mechanism:
-      "Retatrutide + Cagrilintide, 99% purity, for laboratory research use. A research blend of a GLP-1/GIP/glucagon triple-agonist peptide and a long-acting amylin-analogue peptide, investigated in vitro for incretin- and amylin-receptor activity.",
+      "GLP3 Reta + Cagrilintide, 99% purity, for laboratory research use. A research blend of a GLP-1/GIP/glucagon triple-agonist peptide and a long-acting amylin-analogue peptide, investigated in vitro for incretin- and amylin-receptor activity.",
     variants: [
       { label: "30 mg + 5 mg", mg: 35, price: 1250, image: "/products/retatrutide-cagrilintide-30mg-5mg.png" },
       { label: "40 mg + 10 mg", mg: 50, price: 1550, image: "/products/retatrutide-cagrilintide-40mg-10mg.png" },
@@ -478,7 +480,7 @@ export const PRODUCTS: Product[] = [
   // ============================== VIALS ==============================
   {
     id: "retatrutide-vial",
-    name: "Retatrutide",
+    name: "GLP3 Reta",
     subtitle: "Lyophilised powder — vial",
     form: "vial",
     focus: ["weightloss"],
@@ -486,7 +488,7 @@ export const PRODUCTS: Product[] = [
     summary: "Synthetic triple-agonist peptide (GLP-1 / GIP / glucagon receptors)",
     category: "peptides",
     mechanism:
-      "Retatrutide, 99.4% purity, for laboratory research use. A synthetic peptide investigated in vitro and in animal models for agonist activity at GLP-1, GIP, and glucagon receptors.",
+      "GLP3 Reta, 99.4% purity, for laboratory research use. A synthetic peptide investigated in vitro and in animal models for agonist activity at GLP-1, GIP, and glucagon receptors.",
     variants: [
       { label: "60 mg", mg: 60, price: 1250, image: "/products/retatrutide-vial-60mg.png" },
     ],

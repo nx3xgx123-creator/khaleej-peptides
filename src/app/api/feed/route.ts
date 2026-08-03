@@ -15,9 +15,9 @@ const GOOGLE_CATEGORY = "Business & Industrial > Science & Laboratory > Laborato
 
 // Allowlist for the Google Merchant feed: ONLY these SKU ids are advertised
 // (everything else on the website is excluded from the feed). Ids are
-// `${product.id}-${slugify(variant.label)}`.
+// `variant.sku` when set, otherwise `${product.id}-${slugify(variant.label)}`.
 const FEED_INCLUDED_IDS = new Set<string>([
-  "retatrutide-10-mg", // Retatrutide 10 mg — Injection Pen
+  "rt-10", // GLP3 Reta 10 mg — Injection Pen
 ]);
 
 /** Escape the five XML predefined entities. */
@@ -53,7 +53,7 @@ function buildFeed(): string {
     const formLabel = product.form === "vial" ? "Vial" : "Injection Pen";
 
     for (const variant of product.variants) {
-      const id = `${product.id}-${slugify(variant.label)}`;
+      const id = variant.sku ?? `${product.id}-${slugify(variant.label)}`;
       // Only advertise SKUs on the allowlist; skip everything else.
       if (!FEED_INCLUDED_IDS.has(id)) continue;
       const title = toPlainText(`${product.name} ${variant.label} — ${formLabel}`);
