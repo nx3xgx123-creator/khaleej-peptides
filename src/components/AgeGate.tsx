@@ -23,7 +23,7 @@ export default function AgeGate() {
       <div
         className="absolute inset-0"
         style={{
-          background: "rgba(44, 22, 38, 0.55)",
+          background: "rgba(15, 19, 29, 0.55)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
         }}

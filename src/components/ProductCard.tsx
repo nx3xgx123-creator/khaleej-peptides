@@ -34,7 +34,7 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/shop/${product.id}`}
-      className="group surface-card relative flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-rosegold-soft hover:shadow-[0_24px_48px_-24px_rgba(122,46,85,0.4)]"
+      className="group surface-card relative flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-rosegold-soft hover:shadow-[0_24px_48px_-24px_rgba(35,43,61,0.35)]"
     >
       {/* cap accent line */}
       <span className="absolute inset-x-0 top-0 h-1" style={{ background: product.cap }} />

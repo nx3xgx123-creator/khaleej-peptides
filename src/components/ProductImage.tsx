@@ -13,7 +13,7 @@ export function ProductImage({
   src,
   name,
   dose,
-  accent = "#c08a82",
+  accent = "#232b3d",
   penWidth = 430,
   penClassName,
   imgClassName = "h-full w-full object-contain",

@@ -18,7 +18,7 @@ export default function Home() {
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(1200px 500px at 15% -10%, rgba(236,220,174,0.5), transparent), radial-gradient(900px 500px at 100% 0%, rgba(27,36,71,0.12), transparent)",
+              "radial-gradient(1200px 500px at 15% -10%, rgba(235,224,200,0.55), transparent), radial-gradient(900px 500px at 100% 0%, rgba(35,43,61,0.1), transparent)",
           }}
         />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2 lg:px-8">

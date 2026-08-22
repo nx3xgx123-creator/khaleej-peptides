@@ -15,11 +15,11 @@ export default function HeroVisual() {
       {/* soft glow */}
       <div
         className="absolute -right-16 -top-16 h-64 w-64 rounded-full opacity-50 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(198,161,78,0.45), transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(171,154,118,0.4), transparent 70%)" }}
       />
       <div
         className="absolute -bottom-20 -left-12 h-64 w-64 rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(27,36,71,0.28), transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(35,43,61,0.24), transparent 70%)" }}
       />
 
       <div className="relative flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-line bg-white/80 shadow-xl backdrop-blur">

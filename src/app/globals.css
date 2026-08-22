@@ -1,48 +1,50 @@
 @import "tailwindcss";
 
 /* ===========================================================
-   Khaleej Peptides — White & Gold Luxe Design System
+   Khaleej Peptides — Beige & White Professional Design System
    -----------------------------------------------------------
    Theme tokens keep their original names (plum / rosegold) for
    compatibility, but their VALUES are re-skinned to the brand:
-   • "plum"     → deep navy   (logo wordmark)
-   • "rosegold" → gold        (logo eagle + accents)
+   • "plum"     → charcoal-navy (single accent — buttons, links)
+   • "rosegold" → muted warm taupe (quiet secondary — eyebrows,
+     hairlines). Not a second bright accent — no gradients, no
+     metallic gold; beige/white surfaces carry the look instead.
    =========================================================== */
 
 @theme {
   /* Core surfaces */
   --color-background: #ffffff;
-  --color-foreground: #1b2240;
+  --color-foreground: #211d17;
 
-  /* Brand — deep navy (maps onto former "plum") */
-  --color-plum: #1b2447;
-  --color-plum-deep: #121b39;
-  --color-plum-ink: #0c1226;
+  /* Brand — charcoal-navy, the one accent color (maps onto former "plum") */
+  --color-plum: #232b3d;
+  --color-plum-deep: #171d2b;
+  --color-plum-ink: #0f131d;
 
-  /* Brand — gold (maps onto former "rosegold") */
-  --color-rosegold: #c6a14e;
-  --color-rosegold-deep: #a9842f;
-  --color-rosegold-soft: #ecdcae;
+  /* Muted warm taupe — quiet secondary, not a competing accent (maps onto former "rosegold") */
+  --color-rosegold: #ab9a76;
+  --color-rosegold-deep: #7d6f52;
+  --color-rosegold-soft: #efe8d5;
 
-  /* Neutrals — warm ivory */
-  --color-blush: #fbf7ee;
-  --color-blush-deep: #f5ecd6;
-  --color-mist: #f6f5f2;
-  --color-line: #ece4d0;
-  --color-ink: #1b2240;
-  --color-ink-soft: #6d6f7e;
+  /* Neutrals — beige & white */
+  --color-blush: #f5efe2;
+  --color-blush-deep: #ebe0c8;
+  --color-mist: #f8f6f1;
+  --color-line: #e2d6ba;
+  --color-ink: #211d17;
+  --color-ink-soft: #6f695a;
 
   /* Dark surfaces */
-  --color-charcoal: #121b39;
-  --color-charcoal-soft: #1d2750;
-  --color-navy: #161f2e;
+  --color-charcoal: #1c1a16;
+  --color-charcoal-soft: #29261f;
+  --color-navy: #171512;
 
-  /* Category cap indicators — metallic palette */
-  --color-cap-mint: #b07d4b;     /* bronze    — Recovery */
-  --color-cap-lavender: #20305f; /* navy      — Growth */
-  --color-cap-gold: #c6a14e;     /* gold      — Weight Loss */
-  --color-cap-peach: #707688;    /* slate     — Wellness */
-  --color-cap-rose: #d4b773;     /* champagne — Anti-Aging */
+  /* Category cap indicators — muted, professional palette */
+  --color-cap-mint: #a17a52;     /* bronze       — Recovery */
+  --color-cap-lavender: #2f3b57; /* slate-navy   — Growth */
+  --color-cap-gold: #b99a5c;     /* muted tan    — Weight Loss */
+  --color-cap-peach: #6b7280;    /* slate        — Wellness */
+  --color-cap-rose: #c2ab7c;     /* champagne    — Anti-Aging */
 
   /* Feedback */
   --color-instock: #5ba37e;
@@ -125,37 +127,31 @@ body {
   font-weight: 600;
 }
 
-/* Gold gradient text (logo style) */
+/* Emphasis text — solid accent, no gradient/shine */
 .text-rosegold-gradient {
-  background: linear-gradient(100deg, #a9842f 0%, #c6a14e 32%, #e7cd8a 58%, #a9842f 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-plum);
 }
 
 .text-brand-gradient {
-  background: linear-gradient(100deg, var(--color-plum) 0%, var(--color-rosegold-deep) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-plum);
 }
 
-/* Primary button — navy → gold */
+/* Primary button — solid charcoal-navy, no gradient */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(105deg, var(--color-plum) 0%, var(--color-rosegold-deep) 135%);
+  background: var(--color-plum);
   color: #fff;
   font-weight: 600;
   letter-spacing: 0.01em;
   border-radius: 9999px;
   padding: 0.85rem 1.9rem;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-  box-shadow: 0 10px 26px -12px rgba(27, 36, 71, 0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  box-shadow: 0 10px 26px -12px rgba(23, 29, 43, 0.45);
 }
-.btn-primary:hover { transform: translateY(-1px); filter: brightness(1.06); box-shadow: 0 16px 32px -14px rgba(27, 36, 71, 0.6); }
+.btn-primary:hover { transform: translateY(-1px); background: var(--color-plum-deep); box-shadow: 0 16px 32px -14px rgba(23, 29, 43, 0.5); }
 .btn-primary:active { transform: translateY(0); }
 
 .btn-ghost {
@@ -200,8 +196,8 @@ body {
 .input::placeholder { color: var(--color-ink-soft); }
 .input:focus {
   outline: none;
-  border-color: var(--color-rosegold);
-  box-shadow: 0 0 0 3px rgba(198, 161, 78, 0.2);
+  border-color: var(--color-plum);
+  box-shadow: 0 0 0 3px rgba(35, 43, 61, 0.15);
 }
 
 /* Hairline divider with diamond */
@@ -239,10 +235,10 @@ input[type="range"].lux-range::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-plum), var(--color-rosegold-deep));
+  background: var(--color-plum);
   cursor: pointer;
   border: 3px solid #fff;
-  box-shadow: 0 2px 8px rgba(27, 36, 71, 0.35);
+  box-shadow: 0 2px 8px rgba(23, 29, 43, 0.35);
 }
 input[type="range"].lux-range::-moz-range-thumb {
   width: 22px;
