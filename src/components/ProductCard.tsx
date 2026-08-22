@@ -40,22 +40,22 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-rosegold-soft hover:shadow-[0_24px_48px_-24px_rgba(35,43,61,0.35)]">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_24px_48px_-24px_rgba(35,43,61,0.35)]">
       <Link href={`/shop/${product.id}`} className="block">
-        <div className="relative aspect-[3/2] w-full overflow-hidden bg-white">
+        <div className="relative flex h-36 w-full items-center justify-center overflow-hidden bg-white p-4 sm:h-40">
           {product.form === "vial" && !repImage ? (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blush/60 via-white to-blush-deep/30 transition-transform duration-500 group-hover:scale-110">
-              <VialThumb cap={product.cap} form={product.form} size={100} />
+            <div className="flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-110">
+              <VialThumb cap={product.cap} form={product.form} size={80} />
             </div>
           ) : (
-            <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+            <div className="flex h-full w-full items-center justify-center transition-transform duration-500 ease-out group-hover:scale-[1.04]">
               <ProductImage
                 src={repImage}
                 name={product.name}
                 accent={product.cap}
-                penWidth={190}
-                penClassName="flex h-full w-full items-center justify-center rotate-[-18deg] bg-gradient-to-br from-blush/60 via-white to-blush-deep/30"
-                imgClassName="h-full w-full object-cover"
+                penWidth={140}
+                penClassName="flex h-full w-full items-center justify-center rotate-[-18deg]"
+                imgClassName="max-h-full w-auto object-contain"
               />
             </div>
           )}
@@ -63,28 +63,30 @@ export default function ProductCard({ product }: { product: Product }) {
       </Link>
 
       {/* Body */}
-      <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
-        <span className="mono text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-gold">
+      <div className="flex flex-1 flex-col px-4 pb-4 pt-3">
+        <span className="mono text-[0.6rem] font-semibold uppercase tracking-[0.08em] text-gold">
           {categoryLabel}
         </span>
         <Link href={`/shop/${product.id}`}>
-          <h3 className="mt-1 text-xl font-bold uppercase tracking-tight text-ink">{product.name}</h3>
+          <h3 className="mt-1 text-base font-bold uppercase leading-tight tracking-tight text-ink">
+            {product.name}
+          </h3>
         </Link>
         <div className="mt-1">
           <ProductRating productId={product.id} />
         </div>
-        <p className="mt-2 text-lg font-bold text-gold">{fmt(variant.price)}</p>
+        <p className="mt-1.5 text-base font-bold text-gold">{fmt(variant.price)}</p>
 
         {product.variants.length > 1 && (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
             {product.variants.map((v, idx) => (
               <button
                 key={v.label}
                 onClick={(e) => selectVariant(e, idx)}
-                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold transition-colors ${
                   idx === variantIdx
                     ? "border-plum bg-plum text-white"
-                    : "border-gold/40 bg-white text-ink hover:border-gold"
+                    : "border-line bg-white text-ink hover:border-gold"
                 }`}
               >
                 {v.label}
@@ -95,13 +97,13 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={addToCartClick}
-          className={`mt-4 flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold uppercase tracking-wide transition-colors ${
+          className={`mt-3 flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wide transition-colors ${
             added
               ? "bg-instock text-white"
               : "bg-gold text-white hover:bg-gold-deep"
           }`}
         >
-          {added ? <CheckIcon width={16} height={16} /> : <CartIcon width={16} height={16} />}
+          {added ? <CheckIcon width={14} height={14} /> : <CartIcon width={14} height={14} />}
           {added ? "Added" : "Add to Cart"}
         </button>
       </div>
