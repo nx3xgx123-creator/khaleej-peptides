@@ -1,37 +1,18 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY } from "@/lib/constants";
-import { FOCUS_META, Focus } from "@/lib/products";
 import { WhatsAppIcon, GlobeIcon } from "./icons";
-
-const FOCUS_KEYS: Focus[] = ["weightloss", "growth", "recovery", "antiaging", "wellness"];
 
 export default function Footer() {
   return (
     <footer className="mt-24 border-t border-line bg-blush/40">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-8">
         <div className="md:col-span-1">
           <Logo size={24} />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
             Premium research-grade peptides, third-party tested to a minimum 99% purity, with
             fast discreet delivery across the UAE.
           </p>
-        </div>
-
-        <div>
-          <h4 className="eyebrow text-plum-deep">Categories</h4>
-          <ul className="mt-4 space-y-2.5">
-            {FOCUS_KEYS.map((k) => (
-              <li key={k}>
-                <Link
-                  href={`/shop?focus=${k}`}
-                  className="text-sm text-ink-soft transition-colors hover:text-plum"
-                >
-                  {FOCUS_META[k].short}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div>

@@ -1,28 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { useStore } from "@/lib/store";
-import { FOCUS_META, Focus } from "@/lib/products";
-import { CartIcon, ChevronDown, CloseIcon, FilterIcon } from "./icons";
+import { CartIcon, CloseIcon, FilterIcon } from "./icons";
 import SearchBox from "./SearchBox";
-
-const FOCUS_KEYS: Focus[] = ["weightloss", "growth", "recovery", "antiaging", "wellness"];
 
 export default function Header() {
   const { cartCount, setCartOpen } = useStore();
-  const [catOpen, setCatOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const catRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function onClick(e: MouseEvent) {
-      if (catRef.current && !catRef.current.contains(e.target as Node)) setCatOpen(false);
-    }
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-md">
@@ -37,40 +24,6 @@ export default function Header() {
           <Link href="/shop" className="nav-link rounded-full px-3 py-2 text-sm font-medium text-ink transition-colors hover:text-plum">
             Shop All
           </Link>
-
-          <div ref={catRef} className="relative">
-            <button
-              onClick={() => setCatOpen((o) => !o)}
-              className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-ink transition-colors hover:text-plum"
-            >
-              Categories
-              <ChevronDown width={15} height={15} className={catOpen ? "rotate-180 transition" : "transition"} />
-            </button>
-            {catOpen && (
-              <div
-                className="surface-card absolute left-0 z-50 mt-2 w-72 overflow-hidden p-1.5 shadow-xl"
-                style={{ animation: "pop-in 0.18s ease both" }}
-              >
-                {FOCUS_KEYS.map((k) => (
-                  <Link
-                    key={k}
-                    href={`/shop?focus=${k}`}
-                    onClick={() => setCatOpen(false)}
-                    className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-blush"
-                  >
-                    <span
-                      className="mt-1 h-3 w-3 shrink-0 rounded-full"
-                      style={{ background: FOCUS_META[k].cap }}
-                    />
-                    <span className="flex flex-col">
-                      <span className="text-sm font-semibold text-ink">{FOCUS_META[k].title}</span>
-                      <span className="text-[0.72rem] text-ink-soft">{FOCUS_META[k].blurb}</span>
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
         </nav>
 
         {/* Right utilities */}
@@ -109,18 +62,6 @@ export default function Header() {
           <Link href="/shop" onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink hover:bg-blush">
             Shop All
           </Link>
-          <div className="mt-1 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-ink-soft">Categories</div>
-          {FOCUS_KEYS.map((k) => (
-            <Link
-              key={k}
-              href={`/shop?focus=${k}`}
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium text-ink hover:bg-blush"
-            >
-              <span className="h-2.5 w-2.5 rounded-full" style={{ background: FOCUS_META[k].cap }} />
-              {FOCUS_META[k].title}
-            </Link>
-          ))}
         </div>
       )}
     </header>

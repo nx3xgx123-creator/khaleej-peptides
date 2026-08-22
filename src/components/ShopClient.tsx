@@ -1,17 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  PRODUCTS,
-  FOCUS_META,
-  Focus,
-  Form,
-  fromPrice,
-} from "@/lib/products";
+import { PRODUCTS, Form, fromPrice } from "@/lib/products";
 import ProductCard from "./ProductCard";
 import { FilterIcon, CloseIcon } from "./icons";
 
-const FOCUS_KEYS: Focus[] = ["weightloss", "growth", "recovery", "antiaging", "wellness"];
 const FORMS: { key: Form; label: string }[] = [
   { key: "pen", label: "Injection Pens" },
   { key: "vial", label: "Vials" },
@@ -19,9 +12,8 @@ const FORMS: { key: Form; label: string }[] = [
 
 type Sort = "featured" | "low" | "high" | "az";
 
-export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
+export default function ShopClient() {
   const [forms, setForms] = useState<Form[]>([]);
-  const [focuses, setFocuses] = useState<Focus[]>(initialFocus ? [initialFocus] : []);
   const [sort, setSort] = useState<Sort>("featured");
   const [mobileFilters, setMobileFilters] = useState(false);
 
@@ -31,7 +23,6 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
   const filtered = useMemo(() => {
     let list = PRODUCTS.filter((p) => {
       if (forms.length && !forms.includes(p.form)) return false;
-      if (focuses.length && !p.focus.some((f) => focuses.includes(f))) return false;
       return true;
     });
     list = [...list];
@@ -40,9 +31,9 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
     else if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
     else list.sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
     return list;
-  }, [forms, focuses, sort]);
+  }, [forms, sort]);
 
-  const activeCount = forms.length + focuses.length;
+  const activeCount = forms.length;
 
   const FilterPanel = (
     <div className="space-y-7">
@@ -57,24 +48,9 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
         ))}
       </FilterGroup>
 
-      <FilterGroup title="Category">
-        {FOCUS_KEYS.map((k) => (
-          <CheckRow
-            key={k}
-            label={FOCUS_META[k].short}
-            cap={FOCUS_META[k].cap}
-            checked={focuses.includes(k)}
-            onClick={() => toggle(focuses, setFocuses, k)}
-          />
-        ))}
-      </FilterGroup>
-
       {activeCount > 0 && (
         <button
-          onClick={() => {
-            setForms([]);
-            setFocuses([]);
-          }}
+          onClick={() => setForms([])}
           className="text-xs font-semibold text-plum underline-offset-4 hover:underline"
         >
           Clear all filters ({activeCount})
@@ -89,7 +65,7 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
       <div className="mb-8">
         <span className="eyebrow text-rosegold-deep">Catalog</span>
         <h1 className="font-display mt-2 text-4xl font-medium text-plum-deep sm:text-5xl">
-          {focuses.length === 1 ? FOCUS_META[focuses[0]].title : "All Compounds"}
+          All Compounds
         </h1>
         <p className="mt-2 text-sm text-ink-soft">
           Research grade · Third-party tested · Minimum 99% purity
@@ -131,10 +107,7 @@ export default function ShopClient({ initialFocus }: { initialFocus?: Focus }) {
             <div className="surface-card flex flex-col items-center justify-center gap-3 py-20 text-center">
               <p className="text-sm text-ink-soft">No compounds match your filters.</p>
               <button
-                onClick={() => {
-                  setForms([]);
-                  setFocuses([]);
-                }}
+                onClick={() => setForms([])}
                 className="btn-ghost text-sm"
               >
                 Reset filters
