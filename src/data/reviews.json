@@ -440,5 +440,15 @@
     "productIds": [
       "wolverine"
     ]
+  },
+  {
+    "id": "r45",
+    "name": ".",
+    "text": "Third order of NAD+ pens. Consistently good service, and the pens have held up well in storage between uses.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "nad-plus"
+    ]
   }
 ]
