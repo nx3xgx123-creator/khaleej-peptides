@@ -460,5 +460,15 @@
     "productIds": [
       "nad-plus"
     ]
+  },
+  {
+    "id": "r47",
+    "name": ".",
+    "text": "Second purchase of GHK-Cu for our skin research project. Product has been consistent in concentration and always well packaged.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "ghk-cu"
+    ]
   }
 ]
