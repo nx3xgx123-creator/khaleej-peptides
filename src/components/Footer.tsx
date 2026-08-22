@@ -20,6 +20,8 @@ export default function Footer() {
           <ul className="mt-4 space-y-2.5">
             <li><Link href="/shop" className="text-sm text-ink-soft hover:text-plum">Shop All</Link></li>
             <li><Link href="/about" className="text-sm text-ink-soft hover:text-plum">About &amp; Research Use</Link></li>
+            <li><Link href="/reviews" className="text-sm text-ink-soft hover:text-plum">Customer Reviews</Link></li>
+            <li><Link href="/coa" className="text-sm text-ink-soft hover:text-plum">COA Library</Link></li>
           </ul>
         </div>
 
@@ -43,7 +45,7 @@ export default function Footer() {
 
       <div className="border-t border-line">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <p className="rounded-xl bg-white/70 px-4 py-3 text-center text-[0.7rem] leading-relaxed text-ink-soft">
+          <p className="rounded-card bg-white/70 px-4 py-3 text-center text-[0.7rem] leading-relaxed text-ink-soft">
             <strong className="text-ink">For Laboratory Research Use Only</strong> — All Khaleej
             Peptides products are intended for in vitro laboratory research and are not for human
             consumption, therapeutic, diagnostic, or veterinary use.

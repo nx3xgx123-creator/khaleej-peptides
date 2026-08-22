@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { Product, fromPrice, formatPrice } from "@/lib/products";
 
+/** Blends are authored with "blend" in the summary and no molecular data (see products.ts). */
+function isBlend(p: Product): boolean {
+  return p.summary.toLowerCase().includes("blend");
+}
+
 /** Asymmetric editorial showcase for a fixed set of 4 products — one large "Certificate" card + three supporting cards. */
 export default function FeaturedGrid({ products }: { products: Product[] }) {
   const [big, wide, small1, small2] = products;
@@ -86,7 +91,7 @@ function SmallCard({ product: p, dark }: { product: Product; dark?: boolean }) {
       }`}
     >
       <span className={`mono text-[0.62rem] uppercase tracking-[0.1em] ${dark ? "text-white/45" : "text-ink-soft"}`}>
-        Single Compound
+        {isBlend(p) ? "Blend" : "Single Compound"}
       </span>
       <div className="font-display mt-auto text-xl">{p.name}</div>
       <div
