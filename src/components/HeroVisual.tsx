@@ -1,58 +1,89 @@
-import { DnaMark } from "./Logo";
-import { ShieldIcon, FlaskIcon, AwardIcon, PenIcon } from "./icons";
+import { PRODUCTS, fromPrice, formatPrice } from "@/lib/products";
+import { CheckIcon } from "./icons";
 
-const BADGES = [
-  { icon: ShieldIcon, label: "99%+ Verified Purity" },
-  { icon: FlaskIcon, label: "3rd-Party Lab Tested" },
-  { icon: PenIcon, label: "Pens & Vials" },
-  { icon: AwardIcon, label: "Fast UAE Delivery" },
-];
-
-/** Abstract branded panel for the hero — purely decorative, no product photography. */
+/** Certificate-of-Analysis style specimen card — clinical counterpart to the hero's editorial headline. */
 export default function HeroVisual() {
+  const featured = PRODUCTS.find((p) => p.id === "rt-10") ?? PRODUCTS[0];
+
   return (
-    <div className="relative flex aspect-[4/5] w-full flex-col items-center justify-center gap-10 overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-blush via-white to-blush-deep px-8 py-12 sm:px-12">
+    <div className="relative w-full overflow-hidden rounded-card border border-line bg-gradient-to-br from-blush via-white to-blush-deep p-8 sm:p-12">
       {/* ambient drifting glow */}
       <div
         className="float-a absolute -right-16 -top-16 h-72 w-72 rounded-full opacity-60 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(182,144,90,0.5), transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(168,96,46,0.45), transparent 70%)" }}
       />
       <div
-        className="float-b absolute -bottom-20 -left-12 h-72 w-72 rounded-full opacity-50 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(35,43,61,0.32), transparent 70%)" }}
-      />
-      <div
-        className="float-a-reverse absolute right-1/4 bottom-0 h-40 w-40 rounded-full opacity-40 blur-2xl"
-        style={{ background: "radial-gradient(circle, rgba(138,101,48,0.4), transparent 70%)" }}
+        className="float-b absolute -bottom-20 -left-12 h-72 w-72 rounded-full opacity-45 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(20,23,31,0.4), transparent 70%)" }}
       />
 
-      <div className="relative flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-line bg-white/80 shadow-xl backdrop-blur">
-        <span
-          className="absolute inset-[-6px] animate-spin rounded-full opacity-70"
-          style={{
-            background: "conic-gradient(from 0deg, transparent, rgba(182,144,90,0.35), transparent 40%)",
-            animationDuration: "6s",
-          }}
-        />
-        <DnaMark size={56} />
-      </div>
+      {/* molecular line-art motif */}
+      <svg
+        className="pointer-events-none absolute -right-10 -top-10 opacity-[0.14]"
+        width="260"
+        height="260"
+        viewBox="0 0 200 200"
+      >
+        <g fill="none" stroke="var(--color-plum)" strokeWidth="1.2">
+          <line x1="100" y1="20" x2="100" y2="70" />
+          <line x1="100" y1="70" x2="145" y2="95" />
+          <line x1="100" y1="70" x2="55" y2="95" />
+          <line x1="145" y1="95" x2="145" y2="145" />
+          <line x1="55" y1="95" x2="55" y2="145" />
+          <line x1="145" y1="145" x2="100" y2="170" />
+          <line x1="55" y1="145" x2="100" y2="170" />
+          {[
+            [100, 20],
+            [100, 70],
+            [145, 95],
+            [55, 95],
+            [145, 145],
+            [55, 145],
+            [100, 170],
+          ].map(([cx, cy]) => (
+            <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="5" />
+          ))}
+        </g>
+      </svg>
 
-      <div className="relative grid w-full max-w-sm grid-cols-2 gap-3">
-        {BADGES.map(({ icon: Icon, label }) => (
-          <div
-            key={label}
-            className="flex items-center gap-2.5 rounded-2xl border border-line bg-white/70 px-4 py-3.5 shadow-sm backdrop-blur"
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blush text-rosegold-deep">
-              <Icon width={17} height={17} />
-            </span>
-            <span className="text-xs font-semibold leading-tight text-ink">{label}</span>
+      <div className="relative rounded-card bg-plum p-8 text-white">
+        <div className="flex items-start justify-between">
+          <div>
+            <div className="mono text-[0.68rem] uppercase tracking-[0.16em] text-rosegold">
+              Certificate of Analysis
+            </div>
+            <div className="font-display mt-2 text-3xl">{featured.name}</div>
           </div>
-        ))}
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-rosegold">
+            <CheckIcon width={18} height={18} className="text-rosegold" />
+          </div>
+        </div>
+
+        <div className="mono mt-6 text-xs">
+          <div className="spec-row">
+            <span className="text-white/45">Molecular Wt.</span>
+            <span>{featured.molecular.weight ?? "—"}</span>
+          </div>
+          <div className="spec-row">
+            <span className="text-white/45">Purity (HPLC)</span>
+            <span>≥ {featured.purity}</span>
+          </div>
+          <div className="spec-row">
+            <span className="text-white/45">Storage</span>
+            <span>−20°C, dark</span>
+          </div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-between border-t border-charcoal-soft pt-4">
+          <span className="mono text-[0.65rem] text-white/45">LOT KP-2026-0731</span>
+          <span className="font-display text-xl">{formatPrice(fromPrice(featured))}</span>
+        </div>
       </div>
 
-      <div className="relative lux-rule">
+      <div className="relative mt-6 flex items-center justify-center gap-3">
+        <span className="h-px w-10 bg-rosegold-soft" />
         <span className="eyebrow text-rosegold-deep">Khaleej Peptides · UAE</span>
+        <span className="h-px w-10 bg-rosegold-soft" />
       </div>
     </div>
   );

@@ -94,7 +94,7 @@ export default function ShopClient() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as Sort)}
-              className="ml-auto rounded-full border border-line bg-white px-4 py-2 text-sm text-ink outline-none focus:border-rosegold"
+              className="mono ml-auto rounded-card border border-line bg-white px-4 py-2 text-xs uppercase tracking-[0.04em] text-ink outline-none focus:border-rosegold"
             >
               <option value="featured">Featured</option>
               <option value="low">Price: Low to High</option>
@@ -160,7 +160,7 @@ export default function ShopClient() {
 function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-plum-deep">{title}</h3>
+      <h3 className="mono mb-3 text-[0.68rem] font-medium uppercase tracking-[0.1em] text-ink">{title}</h3>
       <div className="space-y-1.5">{children}</div>
     </div>
   );

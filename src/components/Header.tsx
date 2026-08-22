@@ -20,9 +20,15 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="ml-4 hidden items-center gap-1 lg:flex">
-          <Link href="/shop" className="nav-link rounded-full px-3 py-2 text-sm font-medium text-ink transition-colors hover:text-plum">
-            Shop All
+        <nav className="mono ml-6 hidden items-center gap-6 text-[0.72rem] font-medium uppercase tracking-[0.14em] lg:flex">
+          <Link href="/shop" className="text-ink transition-colors hover:text-rosegold-deep">
+            Catalogue
+          </Link>
+          <Link href="/about" className="text-ink transition-colors hover:text-rosegold-deep">
+            Research
+          </Link>
+          <Link href="/compliance" className="text-ink transition-colors hover:text-rosegold-deep">
+            Compliance
           </Link>
         </nav>
 
@@ -59,8 +65,14 @@ export default function Header() {
           <div className="mb-3">
             <SearchBox compact />
           </div>
-          <Link href="/shop" onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink hover:bg-blush">
-            Shop All
+          <Link href="/shop" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
+            Catalogue
+          </Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
+            Research
+          </Link>
+          <Link href="/compliance" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
+            Compliance
           </Link>
         </div>
       )}

@@ -1,42 +1,45 @@
 @import "tailwindcss";
 
 /* ===========================================================
-   Khaleej Peptides — Beige & White Professional Design System
+   Khaleej Peptides — Editorial × Clinical Design System
    -----------------------------------------------------------
-   Theme tokens keep their original names (plum / rosegold) for
-   compatibility, but their VALUES are re-skinned to the brand:
-   • "plum"     → charcoal-navy (primary accent — buttons, links)
-   • "rosegold" → warm bronze (secondary accent — eyebrows,
-     hairlines, gradient emphasis). Restrained, not metallic gold.
+   Bodoni Moda display serif (editorial/magazine) + IBM Plex
+   Sans/Mono (clinical/lab-report data). Theme tokens keep their
+   original names (plum / rosegold) for compatibility, but VALUES
+   are re-skinned:
+   • "plum"     → near-black charcoal-navy (accent, dark panels)
+   • "rosegold" → burnt bronze (secondary accent, spec highlights)
+   Sharp small-radius surfaces, cream ground, dark "Certificate of
+   Analysis" panels for specs — not a soft luxury-boutique look.
    =========================================================== */
 
 @theme {
-  /* Core surfaces */
-  --color-background: #ffffff;
-  --color-foreground: #211d17;
+  /* Core surfaces — cream ground, not white */
+  --color-background: #f5efe4;
+  --color-foreground: #17140f;
 
-  /* Brand — charcoal-navy, the one accent color (maps onto former "plum") */
-  --color-plum: #232b3d;
-  --color-plum-deep: #171d2b;
-  --color-plum-ink: #0f131d;
+  /* Brand — near-black charcoal-navy, the one accent (maps onto former "plum") */
+  --color-plum: #14171f;
+  --color-plum-deep: #0b0d12;
+  --color-plum-ink: #05060a;
 
-  /* Warm bronze — secondary accent, richer than a flat taupe (maps onto former "rosegold") */
-  --color-rosegold: #b6905a;
-  --color-rosegold-deep: #8a6530;
+  /* Burnt bronze — secondary accent (maps onto former "rosegold") */
+  --color-rosegold: #a8602e;
+  --color-rosegold-deep: #7a431c;
   --color-rosegold-soft: #f2e6c9;
 
-  /* Neutrals — beige & white */
-  --color-blush: #f5efe2;
+  /* Neutrals — cream & white */
+  --color-blush: #f5efe4;
   --color-blush-deep: #ebe0c8;
-  --color-mist: #f8f6f1;
-  --color-line: #e2d6ba;
-  --color-ink: #211d17;
-  --color-ink-soft: #6e6250;
+  --color-mist: #efe6d2;
+  --color-line: #ddd0b8;
+  --color-ink: #17140f;
+  --color-ink-soft: #6b6355;
 
-  /* Dark surfaces */
-  --color-charcoal: #1c1a16;
-  --color-charcoal-soft: #29261f;
-  --color-navy: #171512;
+  /* Dark surfaces — the "Certificate of Analysis" panel tone */
+  --color-charcoal: #14171f;
+  --color-charcoal-soft: #2a2e38;
+  --color-navy: #14171f;
 
   /* Category cap indicators — muted, professional palette */
   --color-cap-mint: #a17a52;     /* bronze       — Recovery */
@@ -49,11 +52,12 @@
   --color-instock: #5ba37e;
 
   /* Fonts */
-  --font-serif: var(--font-cormorant), Georgia, serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-bodoni), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono-brand: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Radii */
-  --radius-card: 14px;
+  /* Radii — sharp, architectural, not soft/rounded */
+  --radius-card: 2px;
 
   /* Animations */
   --animate-fade-in: fade-in 0.5s ease both;
@@ -155,13 +159,30 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Eyebrow / tracked-out small caps */
+/* Eyebrow / tracked-out small caps — monospace, lab-label feel */
 .eyebrow {
+  font-family: var(--font-mono-brand);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.72rem;
-  font-weight: 600;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  font-weight: 500;
 }
+
+/* Monospace utility — technical/data accents (specs, labels, prices-in-context) */
+.mono {
+  font-family: var(--font-mono-brand);
+}
+
+/* Spec row — a Certificate-of-Analysis style key/value line */
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--color-charcoal-soft);
+  font-family: var(--font-mono-brand);
+  font-size: 0.8rem;
+}
+.spec-row:last-child { border-bottom: none; }
 
 /* Emphasis text — restrained two-tone gradient, no metallic shine */
 .text-rosegold-gradient {
@@ -178,7 +199,7 @@ body {
   color: transparent;
 }
 
-/* Primary button — solid charcoal-navy with a hover sheen sweep */
+/* Primary button — solid charcoal-navy, sharp corners, hover sheen sweep */
 .btn-primary {
   position: relative;
   display: inline-flex;
@@ -187,9 +208,9 @@ body {
   gap: 0.5rem;
   background: var(--color-plum);
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.01em;
-  border-radius: 9999px;
+  border-radius: var(--radius-card);
   padding: 0.85rem 1.9rem;
   overflow: hidden;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
@@ -219,13 +240,13 @@ body {
   gap: 0.5rem;
   border: 1px solid var(--color-line);
   color: var(--color-plum-deep);
-  font-weight: 600;
-  border-radius: 9999px;
+  font-weight: 500;
+  border-radius: var(--radius-card);
   padding: 0.8rem 1.7rem;
   background: #fff;
   transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
 }
-.btn-ghost:hover { border-color: var(--color-rosegold); background: var(--color-blush); transform: translateY(-1px); }
+.btn-ghost:hover { border-color: var(--color-rosegold); background: var(--color-blush-deep); transform: translateY(-1px); }
 
 /* Card surface */
 .surface-card {
@@ -244,7 +265,7 @@ body {
   display: block;
   width: 100%;
   border: 1px solid var(--color-line);
-  border-radius: 12px;
+  border-radius: 4px;
   background: #fff;
   padding: 0.7rem 1rem;
   font-size: 0.875rem;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Mono, Bodoni_Moda } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/lib/store";
 import Header from "@/components/Header";
@@ -9,14 +9,22 @@ import AgeGate from "@/components/AgeGate";
 import CartDrawer from "@/components/CartDrawer";
 import WhatsAppFAB from "@/components/WhatsAppFAB";
 
-const inter = Inter({
-  variable: "--font-inter",
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -38,7 +46,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable} h-full`}>
+    <html lang="en" className={`${plexSans.variable} ${plexMono.variable} ${bodoni.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         {/* Google tag (gtag.js) — Google Ads AW-18299175469 (site-wide, once per page) */}
         <Script

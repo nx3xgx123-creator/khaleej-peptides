@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
-import ProductCard from "@/components/ProductCard";
+import FeaturedGrid from "@/components/FeaturedGrid";
 import TrustBar from "@/components/TrustBar";
 import Reviews from "@/components/Reviews";
 import HeroVisual from "@/components/HeroVisual";
@@ -10,50 +10,59 @@ import { DnaMark } from "@/components/Logo";
 
 export default function Home() {
   const featured = PRODUCTS.filter((p) => p.featured).slice(0, 4);
+  const compoundCount = PRODUCTS.length;
 
   return (
     <>
       {/* ============== HERO ============== */}
       <section className="relative overflow-hidden">
         <div
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 -z-10 opacity-50"
           style={{
-            background:
-              "radial-gradient(1200px 500px at 15% -10%, rgba(235,224,200,0.55), transparent), radial-gradient(900px 500px at 100% 0%, rgba(35,43,61,0.1), transparent)",
+            backgroundImage:
+              "linear-gradient(var(--color-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-line) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            maskImage: "linear-gradient(to bottom, black, transparent)",
           }}
         />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2 lg:px-8">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
           {/* Left */}
           <div style={{ animation: "var(--animate-slide-up)" }}>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-3.5 py-1.5 backdrop-blur">
-              <DnaMark size={16} />
-              <span className="eyebrow text-rosegold-deep">Premium Research Peptides · UAE</span>
+            <div className="mono mb-6 text-xs uppercase tracking-[0.16em] text-rosegold-deep">
+              Batch-Verified &nbsp;·&nbsp; Est. Dubai, UAE
             </div>
-            <h1 className="font-display text-5xl font-medium leading-[1.05] text-plum-deep sm:text-6xl lg:text-7xl">
-              Research-Grade Peptides.
+            <h1 className="font-display text-6xl font-medium leading-[0.98] text-ink sm:text-7xl lg:text-8xl">
+              Research
               <br />
-              <span className="text-rosegold-gradient">Gulf-Grade Purity.</span>
+              peptides,
+              <br />
+              <span className="italic text-rosegold-deep">verified.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
-              Research-grade peptides, synthesized to a minimum{" "}
-              <strong className="text-ink">99% purity</strong> and independently third-party
-              tested. Pens and vials, discreetly packaged with fast delivery across the UAE.
+            <p className="mt-8 max-w-lg text-base leading-relaxed text-ink-soft">
+              A curated laboratory catalogue of synthetic peptides and research compounds —
+              each lot independently characterised by HPLC and released only above{" "}
+              <strong className="text-ink">99% purity</strong>. Supplied strictly for in vitro
+              research.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center gap-5">
               <Link href="/shop" className="btn-primary">
-                Shop Our Catalog
+                View the Catalogue
                 <ArrowRight width={18} height={18} />
               </Link>
+              <Link href="/compliance" className="mono text-xs uppercase tracking-[0.08em] text-ink underline underline-offset-4">
+                Read the Compliance Notice
+              </Link>
             </div>
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+
+            <div className="mt-16 flex flex-wrap gap-x-14 gap-y-4 border-t border-line pt-7">
               {[
-                ["99%+", "Verified Purity"],
-                ["3rd-Party", "Lab Tested"],
-                ["UAE", "Fast Delivery"],
+                ["99.4%", "Avg. HPLC Purity"],
+                [String(compoundCount), "Compounds in Stock"],
+                ["24h", "UAE Dispatch"],
               ].map(([big, small]) => (
                 <div key={small}>
-                  <p className="font-display text-2xl font-semibold text-plum">{big}</p>
-                  <p className="text-xs uppercase tracking-wider text-ink-soft">{small}</p>
+                  <p className="font-display text-4xl text-ink">{big}</p>
+                  <p className="mono mt-1 text-[0.65rem] uppercase tracking-[0.1em] text-ink-soft">{small}</p>
                 </div>
               ))}
             </div>
@@ -69,30 +78,27 @@ export default function Home() {
       <TrustBar />
 
       {/* ============== FEATURED PRODUCTS ============== */}
-      <section className="bg-blush/40 py-20">
+      <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-6">
               <div>
-                <span className="eyebrow text-rosegold-deep">Best Sellers</span>
-                <h2 className="font-display mt-2 text-4xl font-medium text-plum-deep sm:text-5xl">
+                <span className="eyebrow text-rosegold-deep">Catalogue &nbsp;/&nbsp; 01</span>
+                <h2 className="font-display mt-2 text-4xl text-ink sm:text-5xl">
                   Featured Compounds
                 </h2>
               </div>
-              <Link href="/shop" className="btn-ghost text-sm">
-                View all
-                <ArrowRight width={16} height={16} />
+              <Link href="/shop" className="mono text-xs uppercase tracking-[0.08em] text-ink underline underline-offset-4">
+                View All {PRODUCTS.length} Compounds →
               </Link>
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {featured.map((p, i) => (
-              <Reveal key={p.id} delay={i * 80}>
-                <ProductCard product={p} />
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={100}>
+            <div className="mt-8">
+              <FeaturedGrid products={featured} />
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -104,8 +110,8 @@ export default function Home() {
           <div className="lux-rule mb-6">
             <DnaMark size={20} />
           </div>
-          <h2 className="font-display text-3xl font-medium leading-snug text-plum-deep sm:text-4xl">
-            Peptide science. <span className="text-rosegold-gradient">Verified purity.</span>
+          <h2 className="font-display text-3xl leading-snug text-ink sm:text-4xl">
+            Peptide science. <span className="italic text-rosegold-deep">Verified purity.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
             Khaleej Peptides offers a curated range of research peptides and related compounds,
