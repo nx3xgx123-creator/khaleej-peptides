@@ -480,5 +480,15 @@
     "productIds": [
       "tesamorelin"
     ]
+  },
+  {
+    "id": "r49",
+    "name": ".",
+    "text": "Second order of MOTS-C 20mg. Product quality has been consistent and the packaging always arrives intact.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "mots-c"
+    ]
   }
 ]
