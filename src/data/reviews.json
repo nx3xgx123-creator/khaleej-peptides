@@ -380,5 +380,15 @@
     "productIds": [
       "ss-31"
     ]
+  },
+  {
+    "id": "r39",
+    "name": ",",
+    "text": "Second order of SLU-PP-223 for the same metabolic study. Product quality and paperwork have been consistent across orders.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "slu-pp-223"
+    ]
   }
 ]
