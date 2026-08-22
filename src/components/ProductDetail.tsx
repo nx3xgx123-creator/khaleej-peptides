@@ -133,7 +133,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               {product.category}
             </span>
             <ProductRating productId={product.id} />
-            <WriteReview productName={product.name} />
+            <WriteReview productId={product.id} productName={product.name} />
           </div>
 
           <h1 className="font-display mt-4 text-4xl font-medium leading-tight text-plum-deep sm:text-5xl">
