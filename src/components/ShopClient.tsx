@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { PRODUCTS, Form, fromPrice } from "@/lib/products";
 import ProductCard from "./ProductCard";
-import { FilterIcon, CloseIcon } from "./icons";
+import { FilterIcon, CloseIcon, PenIcon, VialIcon, CheckIcon } from "./icons";
 
 const FORMS: { key: Form; label: string }[] = [
   { key: "pen", label: "Injection Pens" },
@@ -34,6 +34,14 @@ export default function ShopClient() {
   }, [forms, sort]);
 
   const activeCount = forms.length;
+
+  const formCounts = useMemo(
+    () => ({
+      pen: PRODUCTS.filter((p) => p.form === "pen").length,
+      vial: PRODUCTS.filter((p) => p.form === "vial").length,
+    }),
+    []
+  );
 
   const FilterPanel = (
     <div className="space-y-7">
@@ -70,6 +78,25 @@ export default function ShopClient() {
         <p className="mt-2 text-sm text-ink-soft">
           Research grade · Third-party tested · Minimum 99% purity
         </p>
+      </div>
+
+      {/* Pens vs. Vials chooser */}
+      <div className="mb-10 grid gap-4 sm:grid-cols-2">
+        <FormChoice
+          label="Injection Pens"
+          desc="Pre-filled, ready-dosed pens for straightforward research handling."
+          count={formCounts.pen}
+          active={forms.length === 1 && forms[0] === "pen"}
+          onClick={() => setForms(forms.length === 1 && forms[0] === "pen" ? [] : ["pen"])}
+          dark
+        />
+        <FormChoice
+          label="Vials"
+          desc="Lyophilised powder in sealed vials for custom reconstitution."
+          count={formCounts.vial}
+          active={forms.length === 1 && forms[0] === "vial"}
+          onClick={() => setForms(forms.length === 1 && forms[0] === "vial" ? [] : ["vial"])}
+        />
       </div>
 
       <div className="flex flex-col gap-8 lg:flex-row">
@@ -154,6 +181,56 @@ export default function ShopClient() {
         </div>
       )}
     </div>
+  );
+}
+
+function FormChoice({
+  label,
+  desc,
+  count,
+  active,
+  onClick,
+  dark,
+}: {
+  label: string;
+  desc: string;
+  count: number;
+  active: boolean;
+  onClick: () => void;
+  dark?: boolean;
+}) {
+  const Icon = label === "Vials" ? VialIcon : PenIcon;
+  return (
+    <button
+      onClick={onClick}
+      className={`group flex items-center gap-4 rounded-card border p-5 text-left transition-all ${
+        dark
+          ? "bg-plum text-white border-plum hover:-translate-y-0.5"
+          : "bg-white border-line hover:-translate-y-0.5 hover:border-rosegold"
+      } ${active ? "ring-2 ring-rosegold" : ""}`}
+    >
+      <span
+        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
+          dark ? "bg-charcoal-soft text-rosegold" : "bg-blush text-rosegold-deep"
+        }`}
+      >
+        <Icon width={22} height={22} />
+      </span>
+      <span className="flex-1">
+        <span className="flex items-center gap-2">
+          <span className="font-display text-xl">{label}</span>
+          <span className={`mono text-[0.62rem] uppercase tracking-[0.06em] ${dark ? "text-white/45" : "text-ink-soft"}`}>
+            {count} {count === 1 ? "compound" : "compounds"}
+          </span>
+        </span>
+        <span className={`mt-1 block text-sm leading-snug ${dark ? "text-white/70" : "text-ink-soft"}`}>{desc}</span>
+      </span>
+      {active && (
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-rosegold text-white">
+          <CheckIcon width={14} height={14} />
+        </span>
+      )}
+    </button>
   );
 }
 

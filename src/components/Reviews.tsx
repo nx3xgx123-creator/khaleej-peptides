@@ -1,31 +1,38 @@
+import Link from "next/link";
 import { REVIEWS } from "@/lib/reviews";
-import { StarIcon, UserIcon } from "./icons";
 import WriteReview from "./WriteReview";
+import ReviewCard, { Stars } from "./ReviewCard";
 import Reveal from "./Reveal";
+import { ArrowRight } from "./icons";
 
-function Stars({ rating, className = "" }: { rating: number; className?: string }) {
-  return (
-    <div className={`flex items-center gap-0.5 ${className}`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <StarIcon key={i} width={13} height={13} className={i < rating ? "" : "opacity-30"} />
-      ))}
-    </div>
-  );
-}
+const HOMEPAGE_CAP = 8; // featured pull-quote + up to 7 notebook entries
 
 export default function Reviews() {
-  const [featured, ...rest] = REVIEWS;
+  const newestFirst = [...REVIEWS].reverse();
+  const [featured, ...rest] = newestFirst;
   if (!featured) return null;
+
+  const shown = rest.slice(0, HOMEPAGE_CAP - 1);
+  const hasMore = REVIEWS.length > HOMEPAGE_CAP;
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <Reveal>
-        <span className="eyebrow text-rosegold-deep">Field Notes &nbsp;/&nbsp; Verified Feedback</span>
-        <h2 className="font-display mt-2 text-4xl text-ink sm:text-5xl">What Researchers Report</h2>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <span className="eyebrow text-rosegold-deep">Field Notes &nbsp;/&nbsp; Verified Feedback</span>
+            <h2 className="font-display mt-2 text-4xl text-ink sm:text-5xl">What Researchers Report</h2>
+          </div>
+          {hasMore && (
+            <Link href="/reviews" className="mono text-xs uppercase tracking-[0.08em] text-ink underline underline-offset-4">
+              View All {REVIEWS.length} Entries →
+            </Link>
+          )}
+        </div>
       </Reveal>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
-        {/* Featured pull-quote */}
+        {/* Featured pull-quote — most recent */}
         <Reveal>
           <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-card bg-plum p-10 text-white sm:p-14">
             <span className="font-display pointer-events-none absolute -left-1 -top-6 text-[10rem] leading-none text-charcoal-soft">
@@ -41,36 +48,32 @@ export default function Reviews() {
             </div>
             <div className="relative mt-10 flex items-center justify-between border-t border-charcoal-soft pt-5">
               <span className="mono text-[0.68rem] text-white/45">{featured.name}</span>
-              <Stars rating={featured.rating} className="mono text-rosegold" />
+              <Stars rating={featured.rating} className="text-rosegold" />
             </div>
           </div>
         </Reveal>
 
         {/* Notebook-entry grid */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {rest.map((r, i) => (
+          {shown.map((r, i) => (
             <Reveal key={r.id} delay={(i % 4) * 70}>
-              <div className={`h-full rounded-card border border-line p-5 ${i % 3 === 0 ? "bg-blush-deep/60" : "bg-white"}`}>
-                <div className="flex items-center justify-between">
-                  <span className="mono text-[0.6rem] uppercase tracking-[0.08em] text-rosegold-deep">
-                    Entry / {String(i + 2).padStart(3, "0")}
-                  </span>
-                  <Stars rating={r.rating} className="text-rosegold-deep" />
-                </div>
-                <p className="mt-3 text-[0.83rem] leading-relaxed text-ink">{r.text}</p>
-                <div className="mono mt-4 flex items-center gap-1.5 text-[0.62rem] text-ink-soft">
-                  <UserIcon width={12} height={12} />
-                  {r.name}
-                </div>
-              </div>
+              <ReviewCard review={r} entryNumber={i + 2} tint={i % 3 === 0} />
             </Reveal>
           ))}
 
-          <div className="col-span-full flex items-center justify-between pt-2">
+          <div className="col-span-full flex flex-wrap items-center justify-between gap-3 pt-2">
             <span className="mono text-[0.7rem] text-ink-soft">
               {REVIEWS.length} verified {REVIEWS.length === 1 ? "entry" : "entries"} on file
             </span>
-            <WriteReview />
+            <div className="flex items-center gap-4">
+              {hasMore && (
+                <Link href="/reviews" className="mono flex items-center gap-1.5 text-xs uppercase tracking-[0.06em] text-ink-soft hover:text-ink">
+                  View all
+                  <ArrowRight width={12} height={12} />
+                </Link>
+              )}
+              <WriteReview />
+            </div>
           </div>
         </div>
       </div>

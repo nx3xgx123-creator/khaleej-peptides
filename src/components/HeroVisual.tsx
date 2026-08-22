@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { PRODUCTS, fromPrice, formatPrice } from "@/lib/products";
-import { CheckIcon } from "./icons";
+import { CheckIcon, ArrowRight } from "./icons";
 
 /** Certificate-of-Analysis style specimen card — clinical counterpart to the hero's editorial headline. */
 export default function HeroVisual() {
@@ -46,11 +47,11 @@ export default function HeroVisual() {
         </g>
       </svg>
 
-      <div className="relative rounded-card bg-plum p-8 text-white">
+      <Link href={`/shop/${featured.id}`} className="group relative block rounded-card bg-plum p-8 text-white transition-transform duration-300 hover:-translate-y-1">
         <div className="flex items-start justify-between">
           <div>
             <div className="mono text-[0.68rem] uppercase tracking-[0.16em] text-rosegold">
-              Certificate of Analysis
+              Certificate of Analysis · Best Seller
             </div>
             <div className="font-display mt-2 text-3xl">{featured.name}</div>
           </div>
@@ -75,10 +76,13 @@ export default function HeroVisual() {
         </div>
 
         <div className="mt-6 flex items-center justify-between border-t border-charcoal-soft pt-4">
-          <span className="mono text-[0.65rem] text-white/45">LOT KP-2026-0731</span>
           <span className="font-display text-xl">{formatPrice(fromPrice(featured))}</span>
+          <span className="mono flex items-center gap-1.5 text-[0.65rem] uppercase tracking-[0.06em] text-rosegold">
+            View Compound
+            <ArrowRight width={12} height={12} className="transition-transform group-hover:translate-x-1" />
+          </span>
         </div>
-      </div>
+      </Link>
 
       <div className="relative mt-6 flex items-center justify-center gap-3">
         <span className="h-px w-10 bg-rosegold-soft" />
