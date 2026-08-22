@@ -153,5 +153,14 @@
     "productIds": [
       "selank"
     ]
+  },
+  {
+    "id": "r18",
+    "name": "anonymous",
+    "text": "Ordered SS-31 for mitochondrial research. The pen was labeled clearly and the whole ordering-to-delivery process took less time than expected.",
+    "rating": 5,
+    "productIds": [
+      "ss-31"
+    ]
   }
 ]
