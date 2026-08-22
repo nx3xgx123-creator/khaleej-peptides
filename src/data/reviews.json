@@ -390,5 +390,15 @@
     "productIds": [
       "slu-pp-223"
     ]
+  },
+  {
+    "id": "r40",
+    "name": ".",
+    "text": "Second order of Kisspeptin-10. Packaging quality remains consistent and dispatch was quick as usual.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "kisspeptin"
+    ]
   }
 ]
