@@ -2,7 +2,7 @@
   {
     "id": "r1",
     "name": "Verified Customer",
-    "text": "My wife and I have both had a great experience with the peptide — great quality, and we're taking it slow but really happy with it.",
+    "text": "My wife and I have both had a great experience with the peptide, great quality, and we're taking it slow but really happy with it.",
     "rating": 5
   },
   {
@@ -21,7 +21,7 @@
   {
     "id": "r4",
     "name": "Verified Customer",
-    "text": "Really happy with Khaleej Peptides' GLP3 — great quality and support throughout.",
+    "text": "Really happy with Khaleej Peptides' GLP3. Great quality and support throughout.",
     "rating": 5,
     "productIds": ["rt-10", "retatrutide-vial"]
   },
@@ -42,7 +42,7 @@
   {
     "id": "r7",
     "name": "Verified Customer",
-    "text": "Really happy with my experience ordering Tesamorelin from Khaleej Peptides — the service was professional from start to finish.",
+    "text": "Really happy with my experience ordering Tesamorelin from Khaleej Peptides. The service was professional from start to finish.",
     "rating": 5,
     "productIds": ["tesamorelin", "tesamorelin-vial"]
   },
