@@ -18,7 +18,7 @@ function hashId(s: string): string {
 export function PenRender({
   name,
   dose,
-  accent = "#c08a82",
+  accent = "#232b3d",
   width = 540,
   className,
 }: {
