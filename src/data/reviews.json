@@ -90,5 +90,14 @@
     "productIds": [
       "glow"
     ]
+  },
+  {
+    "id": "r11",
+    "name": "anonymous",
+    "text": "Bought the Wolverine Stack pen for a combined regenerative research protocol. Blend ratio was clearly listed on the box and the pen was easy to use for precise dosing in the lab.",
+    "rating": 5,
+    "productIds": [
+      "wolverine"
+    ]
   }
 ]
