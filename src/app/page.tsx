@@ -4,6 +4,7 @@ import ProductCard from "@/components/ProductCard";
 import TrustBar from "@/components/TrustBar";
 import Reviews from "@/components/Reviews";
 import HeroVisual from "@/components/HeroVisual";
+import Reveal from "@/components/Reveal";
 import { ArrowRight } from "@/components/icons";
 import { DnaMark } from "@/components/Logo";
 
@@ -70,22 +71,26 @@ export default function Home() {
       {/* ============== FEATURED PRODUCTS ============== */}
       <section className="bg-blush/40 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <span className="eyebrow text-rosegold-deep">Best Sellers</span>
-              <h2 className="font-display mt-2 text-4xl font-medium text-plum-deep sm:text-5xl">
-                Featured Compounds
-              </h2>
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <span className="eyebrow text-rosegold-deep">Best Sellers</span>
+                <h2 className="font-display mt-2 text-4xl font-medium text-plum-deep sm:text-5xl">
+                  Featured Compounds
+                </h2>
+              </div>
+              <Link href="/shop" className="btn-ghost text-sm">
+                View all
+                <ArrowRight width={16} height={16} />
+              </Link>
             </div>
-            <Link href="/shop" className="btn-ghost text-sm">
-              View all
-              <ArrowRight width={16} height={16} />
-            </Link>
-          </div>
+          </Reveal>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {featured.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {featured.map((p, i) => (
+              <Reveal key={p.id} delay={i * 80}>
+                <ProductCard product={p} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -95,20 +100,22 @@ export default function Home() {
 
       {/* ============== TONE / TRUST CLOSER ============== */}
       <section className="mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
-        <div className="lux-rule mb-6">
-          <DnaMark size={20} />
-        </div>
-        <h2 className="font-display text-3xl font-medium leading-snug text-plum-deep sm:text-4xl">
-          Peptide science. <span className="text-rosegold-gradient">Verified purity.</span>
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
-          Khaleej Peptides offers a curated range of research peptides and related compounds,
-          each characterised for identity and purity and backed by rigorous third-party
-          testing — supplied for laboratory research use only.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/shop" className="btn-primary">Browse the Catalog</Link>
-        </div>
+        <Reveal>
+          <div className="lux-rule mb-6">
+            <DnaMark size={20} />
+          </div>
+          <h2 className="font-display text-3xl font-medium leading-snug text-plum-deep sm:text-4xl">
+            Peptide science. <span className="text-rosegold-gradient">Verified purity.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
+            Khaleej Peptides offers a curated range of research peptides and related compounds,
+            each characterised for identity and purity and backed by rigorous third-party
+            testing — supplied for laboratory research use only.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link href="/shop" className="btn-primary">Browse the Catalog</Link>
+          </div>
+        </Reveal>
       </section>
     </>
   );

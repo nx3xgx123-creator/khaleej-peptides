@@ -12,17 +12,28 @@ const BADGES = [
 export default function HeroVisual() {
   return (
     <div className="relative flex aspect-[4/5] w-full flex-col items-center justify-center gap-10 overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-blush via-white to-blush-deep px-8 py-12 sm:px-12">
-      {/* soft glow */}
+      {/* ambient drifting glow */}
       <div
-        className="absolute -right-16 -top-16 h-64 w-64 rounded-full opacity-50 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(171,154,118,0.4), transparent 70%)" }}
+        className="float-a absolute -right-16 -top-16 h-72 w-72 rounded-full opacity-60 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(182,144,90,0.5), transparent 70%)" }}
       />
       <div
-        className="absolute -bottom-20 -left-12 h-64 w-64 rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(35,43,61,0.24), transparent 70%)" }}
+        className="float-b absolute -bottom-20 -left-12 h-72 w-72 rounded-full opacity-50 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(35,43,61,0.32), transparent 70%)" }}
+      />
+      <div
+        className="float-a-reverse absolute right-1/4 bottom-0 h-40 w-40 rounded-full opacity-40 blur-2xl"
+        style={{ background: "radial-gradient(circle, rgba(138,101,48,0.4), transparent 70%)" }}
       />
 
       <div className="relative flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-line bg-white/80 shadow-xl backdrop-blur">
+        <span
+          className="absolute inset-[-6px] animate-spin rounded-full opacity-70"
+          style={{
+            background: "conic-gradient(from 0deg, transparent, rgba(182,144,90,0.35), transparent 40%)",
+            animationDuration: "6s",
+          }}
+        />
         <DnaMark size={56} />
       </div>
 
