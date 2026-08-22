@@ -6,6 +6,8 @@ import { Product } from "@/lib/products";
 import { useStore } from "@/lib/store";
 import { VialThumb } from "./VialThumb";
 import { ProductImage } from "./ProductImage";
+import WriteReview from "./WriteReview";
+import ProductRating from "./ProductRating";
 import {
   PlusIcon,
   MinusIcon,
@@ -130,6 +132,8 @@ export default function ProductDetail({ product }: { product: Product }) {
               <span className="h-2 w-2 rounded-full" style={{ background: product.cap }} />
               {product.category}
             </span>
+            <ProductRating productId={product.id} />
+            <WriteReview productName={product.name} />
           </div>
 
           <h1 className="font-display mt-4 text-4xl font-medium leading-tight text-plum-deep sm:text-5xl">

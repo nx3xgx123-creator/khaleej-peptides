@@ -1,5 +1,6 @@
 import { REVIEWS } from "@/lib/reviews";
 import { StarIcon, UserIcon } from "./icons";
+import WriteReview from "./WriteReview";
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -39,6 +40,10 @@ export default function Reviews() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <WriteReview />
       </div>
     </section>
   );
