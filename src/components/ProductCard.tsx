@@ -6,6 +6,7 @@ import { Product, fromPrice } from "@/lib/products";
 import { useStore } from "@/lib/store";
 import { VialThumb } from "./VialThumb";
 import { ProductImage } from "./ProductImage";
+import ProductRating from "./ProductRating";
 import { PlusIcon, CheckIcon, PenIcon, VialIcon } from "./icons";
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -65,6 +66,9 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* Body */}
       <div className="flex flex-1 flex-col px-4 pb-4 pt-3">
         <h3 className="font-display text-lg font-medium leading-tight text-ink">{product.name}</h3>
+        <div className="mt-1">
+          <ProductRating productId={product.id} />
+        </div>
         {product.subtitle && (
           <p className="mt-0.5 line-clamp-1 text-[0.72rem] text-ink-soft">{product.subtitle}</p>
         )}
