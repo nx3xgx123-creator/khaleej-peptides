@@ -1,17 +1,10 @@
 import Link from "next/link";
-import { PRODUCTS, FOCUS_META, Focus } from "@/lib/products";
+import { PRODUCTS } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import TrustBar from "@/components/TrustBar";
 import HeroVisual from "@/components/HeroVisual";
 import { ArrowRight } from "@/components/icons";
 import { DnaMark } from "@/components/Logo";
-
-const FOCUS_CARDS: { key: Focus; featured: string[] }[] = [
-  { key: "weightloss", featured: ["GLP3 Reta", "AOD-9604", "Kisspeptin-10"] },
-  { key: "growth", featured: ["CJC + Ipamorelin", "IGF-1 LR3", "Ipamorelin"] },
-  { key: "recovery", featured: ["BPC-157", "KLOW", "Wolverine Stack"] },
-  { key: "antiaging", featured: ["NAD+", "MOTS-C", "SS-31"] },
-];
 
 export default function Home() {
   const featured = PRODUCTS.filter((p) => p.featured).slice(0, 4);
@@ -72,85 +65,6 @@ export default function Home() {
       </section>
 
       <TrustBar />
-
-      {/* ============== SHOP BY TREATMENT FOCUS ============== */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <div className="lux-rule mb-4">
-            <span className="eyebrow text-rosegold-deep">Curated Collections</span>
-          </div>
-          <h2 className="font-display text-4xl font-medium text-plum-deep sm:text-5xl">
-            Shop by Category
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-ink-soft">
-            A research-grade catalogue organised by compound class.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {FOCUS_CARDS.map(({ key, featured }) => {
-            const meta = FOCUS_META[key];
-            const dark = key === "growth";
-            return (
-              <Link
-                key={key}
-                href={`/shop?focus=${key}`}
-                className={`group relative flex flex-col overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_56px_-28px_rgba(122,46,85,0.45)] ${
-                  dark
-                    ? "border-charcoal-soft bg-charcoal text-white"
-                    : "border-line bg-white"
-                }`}
-              >
-                <span
-                  className="absolute right-5 top-5 h-3.5 w-3.5 rounded-full ring-4 ring-white/40"
-                  style={{ background: meta.cap }}
-                />
-                <span
-                  className={`eyebrow ${dark ? "text-rosegold-soft" : "text-rosegold-deep"}`}
-                >
-                  Category
-                </span>
-                <h3
-                  className={`font-display mt-3 text-2xl font-medium leading-tight ${
-                    dark ? "text-white" : "text-ink"
-                  }`}
-                >
-                  {meta.title}
-                </h3>
-                <p className={`mt-2 text-sm ${dark ? "text-white/70" : "text-ink-soft"}`}>
-                  {meta.blurb}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {featured.map((f) => (
-                    <span
-                      key={f}
-                      className={`rounded-full px-2.5 py-1 text-[0.66rem] font-medium ${
-                        dark ? "bg-white/10 text-white/80" : "bg-blush text-plum"
-                      }`}
-                    >
-                      {f}
-                    </span>
-                  ))}
-                </div>
-                <span
-                  className={`mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold transition-colors ${
-                    dark
-                      ? "text-white group-hover:text-rosegold-soft"
-                      : "text-plum group-hover:text-rosegold-deep"
-                  }`}
-                >
-                  Explore collection
-                  <ArrowRight
-                    width={16}
-                    height={16}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
 
       {/* ============== FEATURED PRODUCTS ============== */}
       <section className="bg-blush/40 py-20">
