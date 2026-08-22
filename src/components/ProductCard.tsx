@@ -57,7 +57,7 @@ export default function ProductCard({ product }: { product: Product }) {
             />
           </div>
         )}
-        <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full border border-line bg-white/80 px-2 py-0.5 text-[0.62rem] font-medium text-ink-soft backdrop-blur">
+        <span className="mono absolute right-3 top-3 flex items-center gap-1 rounded-card border border-line bg-white/85 px-2 py-1 text-[0.6rem] uppercase tracking-[0.06em] text-ink-soft backdrop-blur">
           {product.form === "vial" ? <VialIcon width={12} height={12} /> : <PenIcon width={12} height={12} />}
           {product.form === "vial" ? "Vial" : "Pen"}
         </span>
@@ -65,32 +65,28 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Body */}
       <div className="flex flex-1 flex-col px-4 pb-4 pt-3">
-        <h3 className="font-display text-lg font-medium leading-tight text-ink">{product.name}</h3>
+        <h3 className="font-display text-lg leading-tight text-ink">{product.name}</h3>
         <div className="mt-1">
           <ProductRating productId={product.id} />
         </div>
         {product.subtitle && (
-          <p className="mt-0.5 line-clamp-1 text-[0.72rem] text-ink-soft">{product.subtitle}</p>
+          <p className="mono mt-0.5 line-clamp-1 text-[0.68rem] text-ink-soft">{product.subtitle}</p>
         )}
         <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-ink-soft">{product.summary}</p>
 
-        <div className="mt-2 flex flex-wrap gap-1">
-          <span className="rounded-full bg-mist px-2 py-0.5 text-[0.62rem] font-medium text-ink-soft">
-            Research Grade
-          </span>
-          <span className="rounded-full bg-mist px-2 py-0.5 text-[0.62rem] font-medium text-ink-soft">
-            {product.purity} Purity
-          </span>
+        <div className="mono mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[0.62rem] uppercase tracking-[0.04em] text-ink-soft">
+          <span>Research Grade</span>
+          <span className="text-rosegold-deep">{product.purity} Purity</span>
         </div>
 
-        <div className="mt-auto flex items-end justify-between pt-4">
+        <div className="mt-auto flex items-end justify-between border-t border-line pt-3">
           <div>
-            <span className="text-[0.65rem] uppercase tracking-wider text-ink-soft">From</span>
-            <p className="font-display text-xl font-medium text-plum-deep">{fmt(fromPrice(product))}</p>
+            <span className="mono text-[0.6rem] uppercase tracking-[0.08em] text-ink-soft">From</span>
+            <p className="font-display text-xl text-ink">{fmt(fromPrice(product))}</p>
           </div>
           <button
             onClick={quickAdd}
-            className={`flex h-10 w-10 items-center justify-center rounded-full transition-all ${
+            className={`flex h-10 w-10 items-center justify-center rounded-card transition-all ${
               added
                 ? "bg-instock text-white"
                 : "bg-plum text-white hover:bg-rosegold-deep"
