@@ -138,3 +138,9 @@ export const UserIcon = (p: P) => (
     <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
   </svg>
 );
+
+export const StarIcon = (p: P) => (
+  <svg {...base(p)} fill="currentColor" stroke="none">
+    <path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.5 1.2 6.4L12 17.3l-5.7 3.1 1.2-6.4-4.7-4.5 6.4-.8z" />
+  </svg>
+);

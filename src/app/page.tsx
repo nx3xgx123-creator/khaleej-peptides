@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import TrustBar from "@/components/TrustBar";
+import Reviews from "@/components/Reviews";
 import HeroVisual from "@/components/HeroVisual";
 import { ArrowRight } from "@/components/icons";
 import { DnaMark } from "@/components/Logo";
@@ -89,6 +90,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Reviews />
 
       {/* ============== TONE / TRUST CLOSER ============== */}
       <section className="mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
