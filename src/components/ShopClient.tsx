@@ -76,43 +76,40 @@ export default function ShopClient() {
         </div>
       </div>
 
-      <div className="mb-5 flex items-center justify-between gap-3">
-        <p className="text-sm text-ink-soft">
-          {filtered.length} {filtered.length === 1 ? "compound" : "compounds"}
-          {activeCount > 0 && (
-            <button
-              onClick={() => setForms([])}
-              className="ml-3 font-semibold text-plum underline-offset-4 hover:underline"
-            >
-              Clear filter
-            </button>
-          )}
-        </p>
-        <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value as Sort)}
-          className="mono ml-auto rounded-card border border-line bg-white px-4 py-2 text-xs uppercase tracking-[0.04em] text-ink outline-none focus:border-rosegold"
-        >
-          <option value="featured">Featured</option>
-          <option value="low">Price: Low to High</option>
-          <option value="high">Price: High to Low</option>
-          <option value="az">Name: A–Z</option>
-        </select>
-      </div>
-
-      {filtered.length === 0 ? (
-        <div className="surface-card flex flex-col items-center justify-center gap-3 py-20 text-center">
-          <p className="text-sm text-ink-soft">No compounds match your filters.</p>
-          <button onClick={() => setForms([])} className="btn-ghost text-sm">
-            Reset filters
-          </button>
+      {activeCount === 0 ? (
+        <div className="surface-card flex flex-col items-center justify-center gap-1 py-16 text-center">
+          <p className="text-sm text-ink-soft">Select a format above to view compounds.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
+        <>
+          <div className="mb-5 flex items-center justify-between gap-3">
+            <p className="text-sm text-ink-soft">
+              {filtered.length} {filtered.length === 1 ? "compound" : "compounds"}
+              <button
+                onClick={() => setForms([])}
+                className="ml-3 font-semibold text-plum underline-offset-4 hover:underline"
+              >
+                Change format
+              </button>
+            </p>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as Sort)}
+              className="mono ml-auto rounded-card border border-line bg-white px-4 py-2 text-xs uppercase tracking-[0.04em] text-ink outline-none focus:border-rosegold"
+            >
+              <option value="featured">Featured</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="az">Name: A–Z</option>
+            </select>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {filtered.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
