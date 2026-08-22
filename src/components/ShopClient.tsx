@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { PRODUCTS, Form, fromPrice } from "@/lib/products";
 import ProductCard from "./ProductCard";
-import { FilterIcon, CloseIcon, PenIcon, VialIcon, CheckIcon } from "./icons";
+import { ProductImage } from "./ProductImage";
+import { FilterIcon, CloseIcon, ArrowRight } from "./icons";
 
 const FORMS: { key: Form; label: string }[] = [
   { key: "pen", label: "Injection Pens" },
@@ -81,22 +82,31 @@ export default function ShopClient() {
       </div>
 
       {/* Pens vs. Vials chooser */}
-      <div className="mb-10 grid gap-4 sm:grid-cols-2">
-        <FormChoice
-          label="Injection Pens"
-          desc="Pre-filled, ready-dosed pens for straightforward research handling."
-          count={formCounts.pen}
-          active={forms.length === 1 && forms[0] === "pen"}
-          onClick={() => setForms(forms.length === 1 && forms[0] === "pen" ? [] : ["pen"])}
-          dark
-        />
-        <FormChoice
-          label="Vials"
-          desc="Lyophilised powder in sealed vials for custom reconstitution."
-          count={formCounts.vial}
-          active={forms.length === 1 && forms[0] === "vial"}
-          onClick={() => setForms(forms.length === 1 && forms[0] === "vial" ? [] : ["vial"])}
-        />
+      <div className="mb-14">
+        <span className="eyebrow text-rosegold-deep">Choose Your Format</span>
+        <h2 className="font-display mt-2 text-3xl font-medium text-plum-deep sm:text-4xl">
+          Pens or vials.
+        </h2>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <FormatCard
+            label="Injection Pens"
+            desc="Pre-filled, ready-dosed pens for straightforward research handling — no reconstitution required."
+            count={formCounts.pen}
+            active={forms.length === 1 && forms[0] === "pen"}
+            onClick={() => setForms(forms.length === 1 && forms[0] === "pen" ? [] : ["pen"])}
+            image="/products/retatrutide-10mg.png"
+            name="GLP3 Reta"
+          />
+          <FormatCard
+            label="Vials"
+            desc="Lyophilised powder in sealed vials for custom reconstitution and dosing control."
+            count={formCounts.vial}
+            active={forms.length === 1 && forms[0] === "vial"}
+            onClick={() => setForms(forms.length === 1 && forms[0] === "vial" ? [] : ["vial"])}
+            image="/products/retatrutide-vial-60mg.png"
+            name="GLP3 Reta"
+          />
+        </div>
       </div>
 
       <div className="flex flex-col gap-8 lg:flex-row">
@@ -184,52 +194,52 @@ export default function ShopClient() {
   );
 }
 
-function FormChoice({
+function FormatCard({
   label,
   desc,
   count,
   active,
   onClick,
-  dark,
+  image,
+  name,
 }: {
   label: string;
   desc: string;
   count: number;
   active: boolean;
   onClick: () => void;
-  dark?: boolean;
+  image: string;
+  name: string;
 }) {
-  const Icon = label === "Vials" ? VialIcon : PenIcon;
   return (
     <button
       onClick={onClick}
-      className={`group flex items-center gap-4 rounded-card border p-5 text-left transition-all ${
-        dark
-          ? "bg-plum text-white border-plum hover:-translate-y-0.5"
-          : "bg-white border-line hover:-translate-y-0.5 hover:border-rosegold"
-      } ${active ? "ring-2 ring-rosegold" : ""}`}
+      className={`group flex items-stretch gap-5 rounded-card border bg-white p-5 text-left transition-all hover:-translate-y-0.5 hover:border-rosegold sm:p-6 ${
+        active ? "border-plum ring-1 ring-plum" : "border-line"
+      }`}
     >
-      <span
-        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
-          dark ? "bg-charcoal-soft text-rosegold" : "bg-blush text-rosegold-deep"
-        }`}
-      >
-        <Icon width={22} height={22} />
-      </span>
-      <span className="flex-1">
-        <span className="flex items-center gap-2">
-          <span className="font-display text-xl">{label}</span>
-          <span className={`mono text-[0.62rem] uppercase tracking-[0.06em] ${dark ? "text-white/45" : "text-ink-soft"}`}>
-            {count} {count === 1 ? "compound" : "compounds"}
-          </span>
+      <span className="relative flex h-28 w-24 shrink-0 items-center justify-center overflow-hidden rounded-card bg-gradient-to-br from-blush/70 via-white to-blush-deep/40 sm:h-32 sm:w-28">
+        <span className="rotate-[-8deg] transition-transform duration-500 ease-out group-hover:rotate-[-4deg] group-hover:scale-105">
+          <ProductImage
+            src={image}
+            name={name}
+            accent="#a8602e"
+            penWidth={110}
+            imgClassName="max-h-24 w-auto object-contain sm:max-h-28"
+          />
         </span>
-        <span className={`mt-1 block text-sm leading-snug ${dark ? "text-white/70" : "text-ink-soft"}`}>{desc}</span>
       </span>
-      {active && (
-        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-rosegold text-white">
-          <CheckIcon width={14} height={14} />
+      <span className="flex min-w-0 flex-1 flex-col justify-center">
+        <span className="font-display text-xl font-medium text-plum-deep sm:text-2xl">{label}</span>
+        <span className="mono mt-1 text-[0.62rem] uppercase tracking-[0.08em] text-ink-soft">
+          {count} {count === 1 ? "compound" : "compounds"} available
         </span>
-      )}
+        <span className="mt-2 text-sm leading-snug text-ink-soft">{desc}</span>
+        <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.04em] text-rosegold-deep">
+          Browse {label}
+          <ArrowRight width={13} height={13} className="transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </span>
     </button>
   );
 }
