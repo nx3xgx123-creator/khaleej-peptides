@@ -330,5 +330,15 @@
     "productIds": [
       "igf-1-lr3"
     ]
+  },
+  {
+    "id": "r34",
+    "name": ".",
+    "text": "Second order of AOD-9604. Same reliable packaging and quick turnaround as the first time.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "aod-9604"
+    ]
   }
 ]
