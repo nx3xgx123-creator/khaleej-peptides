@@ -340,5 +340,15 @@
     "productIds": [
       "aod-9604"
     ]
+  },
+  {
+    "id": "r35",
+    "name": ".",
+    "text": "Second order of Semax for our cognitive research protocol. Consistent quality and quick delivery again.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "semax"
+    ]
   }
 ]
