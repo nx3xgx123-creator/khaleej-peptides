@@ -216,5 +216,14 @@
     "productIds": [
       "tesamorelin"
     ]
+  },
+  {
+    "id": "r25",
+    "name": "anonymous",
+    "text": "Purchased MOTS-C 20mg pen for a cellular research project. Product arrived cold-packed, well within expected transit time, and the concentration matched the label exactly.",
+    "rating": 4,
+    "productIds": [
+      "mots-c"
+    ]
   }
 ]
