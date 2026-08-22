@@ -24,11 +24,11 @@ export default function Header() {
           <Link href="/shop" className="text-ink transition-colors hover:text-rosegold-deep">
             Catalogue
           </Link>
-          <Link href="/about" className="text-ink transition-colors hover:text-rosegold-deep">
-            Research
+          <Link href="/coa" className="text-ink transition-colors hover:text-rosegold-deep">
+            COA Library
           </Link>
-          <Link href="/compliance" className="text-ink transition-colors hover:text-rosegold-deep">
-            Compliance
+          <Link href="/reviews" className="text-ink transition-colors hover:text-rosegold-deep">
+            Reviews
           </Link>
         </nav>
 
@@ -68,11 +68,11 @@ export default function Header() {
           <Link href="/shop" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
             Catalogue
           </Link>
-          <Link href="/about" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
-            Research
+          <Link href="/coa" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
+            COA Library
           </Link>
-          <Link href="/compliance" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
-            Compliance
+          <Link href="/reviews" onClick={() => setMobileOpen(false)} className="mono block px-3 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.1em] text-ink hover:bg-blush">
+            Reviews
           </Link>
         </div>
       )}

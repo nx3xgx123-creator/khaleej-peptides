@@ -13,7 +13,7 @@ export default function ProductRating({ productId }: { productId: string }) {
         ))}
       </div>
       <span className="text-[0.7rem] text-ink-soft">
-        {rating.average.toFixed(1)} ({rating.count})
+        {rating.average.toFixed(1)}
       </span>
     </div>
   );
