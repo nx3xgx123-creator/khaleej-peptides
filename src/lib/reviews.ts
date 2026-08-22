@@ -5,6 +5,8 @@ export interface Review {
   name: string;
   text: string;
   rating: number;
+  /** ISO date (YYYY-MM-DD) the review went live */
+  date?: string;
   /** product id(s) this review is about, when identifiable from the review text */
   productIds?: string[];
 }

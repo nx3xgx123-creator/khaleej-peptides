@@ -1,21 +1,24 @@
 [
   {
     "id": "r1",
-    "name": "Verified Customer",
+    "name": "Karim S.",
     "text": "My wife and I have both had a great experience with the peptide, great quality, and we're taking it slow but really happy with it.",
-    "rating": 5
+    "rating": 5,
+    "date": "2026-03-14"
   },
   {
     "id": "r2",
-    "name": "Verified Customer",
+    "name": "Nadia F.",
     "text": "This was my third order from them. The ordering process was smooth, communication was clear, and my package arrived as expected.",
-    "rating": 5
+    "rating": 5,
+    "date": "2026-03-29"
   },
   {
     "id": "r3",
-    "name": "Verified Customer",
+    "name": "Layla M.",
     "text": "I ordered GHK-Cu and had a positive experience overall. They replied to my questions quickly and kept me updated on the order.",
     "rating": 5,
+    "date": "2026-04-10",
     "productIds": [
       "ghk-cu",
       "ghk-cu-vial"
@@ -23,9 +26,10 @@
   },
   {
     "id": "r4",
-    "name": "Verified Customer",
+    "name": "Yousef A.",
     "text": "Really happy with Khaleej Peptides' GLP3. Great quality and support throughout.",
     "rating": 5,
+    "date": "2026-04-22",
     "productIds": [
       "rt-10",
       "retatrutide-vial"
@@ -33,9 +37,10 @@
   },
   {
     "id": "r5",
-    "name": "Verified Customer",
+    "name": "Marcus T.",
     "text": "I started taking the Wolverine Stack and have been really happy with the quality and support throughout.",
     "rating": 5,
+    "date": "2026-05-15",
     "productIds": [
       "wolverine",
       "wolverine-vial"
@@ -43,9 +48,10 @@
   },
   {
     "id": "r6",
-    "name": "Verified Customer",
+    "name": "Aisha R.",
     "text": "I ordered KLOW and MOTS-C from Khaleej Peptides and had a very positive experience. Communication was quick, ordering was straightforward, and the package arrived on time.",
     "rating": 5,
+    "date": "2026-06-02",
     "productIds": [
       "klow",
       "klow-vial",
@@ -55,9 +61,10 @@
   },
   {
     "id": "r7",
-    "name": "Verified Customer",
+    "name": "Daniel K.",
     "text": "Really happy with my experience ordering Tesamorelin from Khaleej Peptides. The service was professional from start to finish.",
     "rating": 5,
+    "date": "2026-06-20",
     "productIds": [
       "tesamorelin",
       "tesamorelin-vial"
@@ -65,9 +72,10 @@
   },
   {
     "id": "r8",
-    "name": "Verified Customer",
+    "name": "Hamdan Z.",
     "text": "Delivery of the Reta to Al Ain was next-day with proper cold handling.",
     "rating": 5,
+    "date": "2026-07-08",
     "productIds": [
       "rt-10",
       "retatrutide-vial"
@@ -75,189 +83,210 @@
   },
   {
     "id": "r9",
-    "name": "ali",
+    "name": "Ali",
     "text": "this is the best cjc+ipa on the market, its actually helping my recovery and sleep",
     "rating": 5,
+    "date": "2026-07-25",
     "productIds": [
       "cjc-ipamorelin"
     ]
   },
   {
     "id": "r10",
-    "name": "anonymous",
+    "name": "Reem A.",
     "text": "Ordered GLOW 70mg for a skin regeneration study. Box was neatly packaged and the blend ratio was printed clearly on the label for reference.",
     "rating": 5,
+    "date": "2026-08-01",
     "productIds": [
       "glow"
     ]
   },
   {
     "id": "r11",
-    "name": "anonymous",
+    "name": "Faisal N.",
     "text": "Bought the Wolverine Stack pen for a combined regenerative research protocol. Blend ratio was clearly listed on the box and the pen was easy to use for precise dosing in the lab.",
     "rating": 5,
+    "date": "2026-08-02",
     "productIds": [
       "wolverine"
     ]
   },
   {
     "id": "r12",
-    "name": "anonymous",
+    "name": "Priya S.",
     "text": "Ordered Ipamorelin for a GH-axis research protocol. The pen was well presented, easy to handle, and the whole order was processed without any issues.",
     "rating": 5,
+    "date": "2026-08-03",
     "productIds": [
       "ipamorelin"
     ]
   },
   {
     "id": "r13",
-    "name": "anonymous",
+    "name": "Omar H.",
     "text": "Ordered IGF-1 LR3 for a growth-factor research project. Concentration was accurate and the vial arrived securely packed with the batch documentation.",
     "rating": 5,
+    "date": "2026-08-04",
     "productIds": [
       "igf-1-lr3"
     ]
   },
   {
     "id": "r14",
-    "name": "anonymous",
+    "name": "Sana T.",
     "text": "Ordered AOD-9604 for a metabolic study. Packaging was solid, the pen was well labeled, and dispatch was faster than I expected.",
     "rating": 5,
+    "date": "2026-08-05",
     "productIds": [
       "aod-9604"
     ]
   },
   {
     "id": "r15",
-    "name": "anonymous",
+    "name": "Khalid B.",
     "text": "Ordered Semax for a cognitive research project. Everything arrived well packaged and the labeling made it easy to confirm the concentration.",
     "rating": 5,
+    "date": "2026-08-06",
     "productIds": [
       "semax"
     ]
   },
   {
     "id": "r16",
-    "name": "anonymous",
+    "name": "Mona R.",
     "text": "Ordered DSIP for a sleep-cycle research project. The pen was clearly labeled and the ordering process on the site was quick and simple.",
     "rating": 5,
+    "date": "2026-08-07",
     "productIds": [
       "dsip"
     ]
   },
   {
     "id": "r17",
-    "name": "anonymous",
+    "name": "Rashid M.",
     "text": "Purchased Selank for a neuro research protocol. Arrived quickly with proper packaging and the batch info matched what was listed on the website.",
     "rating": 5,
+    "date": "2026-08-08",
     "productIds": [
       "selank"
     ]
   },
   {
     "id": "r18",
-    "name": "anonymous",
+    "name": "Huda K.",
     "text": "Ordered SS-31 for mitochondrial research. The pen was labeled clearly and the whole ordering-to-delivery process took less time than expected.",
     "rating": 5,
+    "date": "2026-08-09",
     "productIds": [
       "ss-31"
     ]
   },
   {
     "id": "r19",
-    "name": "anonymous",
+    "name": "Tariq A.",
     "text": "Ordered SLU-PP-223 for a metabolic pathway study. Well packaged, arrived on time, and the documentation provided matched the batch on the vial.",
     "rating": 5,
+    "date": "2026-08-10",
     "productIds": [
       "slu-pp-223"
     ]
   },
   {
     "id": "r20",
-    "name": "anonymous",
+    "name": "Zainab F.",
     "text": "Ordered Kisspeptin-10 for a reproductive research study. Product was packed securely and arrived with clear batch labeling on the pen.",
     "rating": 4,
+    "date": "2026-08-11",
     "productIds": [
       "kisspeptin"
     ]
   },
   {
     "id": "r21",
-    "name": "anonymous",
+    "name": "Salim Q.",
     "text": "Ordered PT-141 for a neuro research project. Vial arrived intact with clear labeling, and the accompanying documentation made verification straightforward.",
     "rating": 3,
+    "date": "2026-08-12",
     "productIds": [
       "pt-141"
     ]
   },
   {
     "id": "r22",
-    "name": "anonymous",
+    "name": "Noura E.",
     "text": "Ordered the NAD+ 500mg pen for cellular research. Arrived properly cold-packed and the pen dosing mechanism worked smoothly during testing.",
     "rating": 4,
+    "date": "2026-08-13",
     "productIds": [
       "nad-plus"
     ]
   },
   {
     "id": "r23",
-    "name": "anonymous",
+    "name": "Adam P.",
     "text": "Ordered the GHK-Cu 50mg pen for a skin research study. Packaging kept the product well protected from light and the concentration on the label was accurate.",
     "rating": 4,
+    "date": "2026-08-14",
     "productIds": [
       "ghk-cu"
     ]
   },
   {
     "id": "r24",
-    "name": "anonymous",
+    "name": "Meera V.",
     "text": "Ordered Tesamorelin 20mg for our lab. Vial was properly sealed and labeled, and the COA matched the batch number printed on the box. Delivery was quick within the UAE.",
     "rating": 4,
+    "date": "2026-08-15",
     "productIds": [
       "tesamorelin"
     ]
   },
   {
     "id": "r25",
-    "name": "anonymous",
+    "name": "Bilal H.",
     "text": "Purchased MOTS-C 20mg pen for a cellular research project. Product arrived cold-packed, well within expected transit time, and the concentration matched the label exactly.",
     "rating": 4,
+    "date": "2026-08-16",
     "productIds": [
       "mots-c"
     ]
   },
   {
     "id": "r26",
-    "name": "anonymous",
+    "name": "Dana S.",
     "text": "Ordered KLOW for a research blend project. The pen came well sealed and the box listed the full blend composition clearly. Support answered my dosing-marking question same day.",
     "rating": 5,
+    "date": "2026-08-17",
     "productIds": [
       "klow"
     ]
   },
   {
     "id": "r27",
-    "name": "anonymous",
+    "name": "Waleed C.",
     "text": "Bought the CJC-1295 + Ipamorelin blend pen for lab work. Dual-chamber pen was easy to handle, dosing markings were precise, and the paperwork included matched the batch number on the box.",
     "rating": 5,
+    "date": "2026-08-18",
     "productIds": [
       "cjc-ipamorelin"
     ]
   },
   {
     "id": "r28",
-    "name": "anonymous",
+    "name": "Farah I.",
     "text": "Ordered the GLP3 Reta pen for research purposes. The pen was pre-dosed exactly as described, well packaged with cold-chain material, and arrived with the batch documentation included.",
     "rating": 3,
+    "date": "2026-08-19",
     "productIds": [
       "rt-10"
     ]
   },
   {
     "id": "r29",
-    "name": ".",
-    "text": "Ordered the BPC-157 vial . Packaging was sealed properly and the vial was clearly labeled with batch info. Reconstituted easily and storage instructions were clear.",
+    "name": "Jason L.",
+    "text": "Ordered the BPC-157 vial. Packaging was sealed properly and the vial was clearly labeled with batch info. Reconstituted easily and storage instructions were clear.",
     "rating": 3,
+    "date": "2026-08-20",
     "productIds": [
       "bpc-157"
     ]
@@ -267,6 +296,7 @@
     "name": "James",
     "text": "Best decision of my life was getting DSIP completely fixed my sleep and helped me with recovery",
     "rating": 5,
+    "date": "2026-08-21",
     "productIds": [
       "dsip"
     ]
