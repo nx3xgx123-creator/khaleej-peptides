@@ -360,5 +360,15 @@
     "productIds": [
       "dsip"
     ]
+  },
+  {
+    "id": "r37",
+    "name": ".",
+    "text": "Second order of Selank. Consistently good quality and dispatch has been prompt both times.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "selank"
+    ]
   }
 ]
