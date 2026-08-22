@@ -42,20 +42,20 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-rosegold-soft hover:shadow-[0_24px_48px_-24px_rgba(35,43,61,0.35)]">
       <Link href={`/shop/${product.id}`} className="block">
-        <div className="relative flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-blush/60 via-white to-blush-deep/30 p-6">
+        <div className="relative aspect-[3/2] w-full overflow-hidden bg-white">
           {product.form === "vial" && !repImage ? (
-            <div className="transition-transform duration-500 group-hover:scale-110">
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blush/60 via-white to-blush-deep/30 transition-transform duration-500 group-hover:scale-110">
               <VialThumb cap={product.cap} form={product.form} size={100} />
             </div>
           ) : (
-            <div className="flex h-full w-full items-center justify-center transition-transform duration-500 ease-out group-hover:scale-[1.05]">
+            <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
               <ProductImage
                 src={repImage}
                 name={product.name}
                 accent={product.cap}
                 penWidth={190}
-                penClassName="rotate-[-18deg]"
-                imgClassName="max-h-full w-auto rotate-[-18deg] object-contain"
+                penClassName="flex h-full w-full items-center justify-center rotate-[-18deg] bg-gradient-to-br from-blush/60 via-white to-blush-deep/30"
+                imgClassName="h-full w-full object-cover"
               />
             </div>
           )}
@@ -64,7 +64,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Body */}
       <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
-        <span className="mono text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-rosegold-deep">
+        <span className="mono text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-gold">
           {categoryLabel}
         </span>
         <Link href={`/shop/${product.id}`}>
@@ -73,7 +73,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="mt-1">
           <ProductRating productId={product.id} />
         </div>
-        <p className="mt-2 text-lg font-bold text-rosegold-deep">{fmt(variant.price)}</p>
+        <p className="mt-2 text-lg font-bold text-gold">{fmt(variant.price)}</p>
 
         {product.variants.length > 1 && (
           <div className="mt-3 flex flex-wrap gap-2">
@@ -81,10 +81,10 @@ export default function ProductCard({ product }: { product: Product }) {
               <button
                 key={v.label}
                 onClick={(e) => selectVariant(e, idx)}
-                className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
                   idx === variantIdx
                     ? "border-plum bg-plum text-white"
-                    : "border-line bg-white text-ink hover:border-rosegold"
+                    : "border-gold/40 bg-white text-ink hover:border-gold"
                 }`}
               >
                 {v.label}
@@ -98,7 +98,7 @@ export default function ProductCard({ product }: { product: Product }) {
           className={`mt-4 flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold uppercase tracking-wide transition-colors ${
             added
               ? "bg-instock text-white"
-              : "bg-rosegold-deep text-white hover:bg-plum"
+              : "bg-gold text-white hover:bg-gold-deep"
           }`}
         >
           {added ? <CheckIcon width={16} height={16} /> : <CartIcon width={16} height={16} />}

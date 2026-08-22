@@ -28,6 +28,11 @@
   --color-rosegold-deep: #7a431c;
   --color-rosegold-soft: #f2e6c9;
 
+  /* Warm catalogue gold — product-card price/CTA accent */
+  --color-gold: #ad8438;
+  --color-gold-deep: #8c692a;
+  --color-gold-soft: #f0e2c0;
+
   /* Neutrals — cream & white */
   --color-blush: #f5efe4;
   --color-blush-deep: #ebe0c8;
