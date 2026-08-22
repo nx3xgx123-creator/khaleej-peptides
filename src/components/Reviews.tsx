@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { REVIEWS } from "@/lib/reviews";
 import WriteReview from "./WriteReview";
-import ReviewCard, { Stars } from "./ReviewCard";
+import ReviewCard, { Stars, formatReviewDate } from "./ReviewCard";
 import Reveal from "./Reveal";
 import { ArrowRight } from "./icons";
 
@@ -47,7 +47,10 @@ export default function Reviews() {
               </p>
             </div>
             <div className="relative mt-10 flex items-center justify-between border-t border-charcoal-soft pt-5">
-              <span className="mono text-[0.68rem] text-white/45">{featured.name}</span>
+              <span className="mono text-[0.68rem] text-white/45">
+                {featured.name}
+                {formatReviewDate(featured.date) ? ` · ${formatReviewDate(featured.date)}` : ""}
+              </span>
               <Stars rating={featured.rating} className="text-rosegold" />
             </div>
           </div>

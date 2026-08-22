@@ -76,6 +76,7 @@ export async function approveReview(issueNumber: number, edited: PendingReviewSu
     name: edited.name,
     text: edited.text,
     rating: edited.rating,
+    date: new Date().toISOString().slice(0, 10),
     ...(edited.productId ? { productIds: [edited.productId] } : {}),
   };
 

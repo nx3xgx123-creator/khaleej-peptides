@@ -1,21 +1,24 @@
 [
   {
     "id": "r1",
-    "name": "Verified Customer",
+    "name": "Karim S.",
     "text": "My wife and I have both had a great experience with the peptide, great quality, and we're taking it slow but really happy with it.",
-    "rating": 5
+    "rating": 5,
+    "date": "2026-03-14"
   },
   {
     "id": "r2",
-    "name": "Verified Customer",
+    "name": "Nadia F.",
     "text": "This was my third order from them. The ordering process was smooth, communication was clear, and my package arrived as expected.",
-    "rating": 5
+    "rating": 5,
+    "date": "2026-03-29"
   },
   {
     "id": "r3",
-    "name": "Verified Customer",
+    "name": "Layla M.",
     "text": "I ordered GHK-Cu and had a positive experience overall. They replied to my questions quickly and kept me updated on the order.",
     "rating": 5,
+    "date": "2026-04-10",
     "productIds": [
       "ghk-cu",
       "ghk-cu-vial"
@@ -23,9 +26,10 @@
   },
   {
     "id": "r4",
-    "name": "Verified Customer",
+    "name": "Yousef A.",
     "text": "Really happy with Khaleej Peptides' GLP3. Great quality and support throughout.",
     "rating": 5,
+    "date": "2026-04-22",
     "productIds": [
       "rt-10",
       "retatrutide-vial"
@@ -33,9 +37,10 @@
   },
   {
     "id": "r5",
-    "name": "Verified Customer",
+    "name": "Marcus T.",
     "text": "I started taking the Wolverine Stack and have been really happy with the quality and support throughout.",
     "rating": 5,
+    "date": "2026-05-15",
     "productIds": [
       "wolverine",
       "wolverine-vial"
@@ -43,9 +48,10 @@
   },
   {
     "id": "r6",
-    "name": "Verified Customer",
+    "name": "Aisha R.",
     "text": "I ordered KLOW and MOTS-C from Khaleej Peptides and had a very positive experience. Communication was quick, ordering was straightforward, and the package arrived on time.",
     "rating": 5,
+    "date": "2026-06-02",
     "productIds": [
       "klow",
       "klow-vial",
@@ -55,9 +61,10 @@
   },
   {
     "id": "r7",
-    "name": "Verified Customer",
+    "name": "Daniel K.",
     "text": "Really happy with my experience ordering Tesamorelin from Khaleej Peptides. The service was professional from start to finish.",
     "rating": 5,
+    "date": "2026-06-20",
     "productIds": [
       "tesamorelin",
       "tesamorelin-vial"
@@ -65,9 +72,10 @@
   },
   {
     "id": "r8",
-    "name": "Verified Customer",
+    "name": "Hamdan Z.",
     "text": "Delivery of the Reta to Al Ain was next-day with proper cold handling.",
     "rating": 5,
+    "date": "2026-07-08",
     "productIds": [
       "rt-10",
       "retatrutide-vial"
@@ -75,9 +83,10 @@
   },
   {
     "id": "r9",
-    "name": "ali",
+    "name": "Ali",
     "text": "this is the best cjc+ipa on the market, its actually helping my recovery and sleep",
     "rating": 5,
+    "date": "2026-07-25",
     "productIds": [
       "cjc-ipamorelin"
     ]
