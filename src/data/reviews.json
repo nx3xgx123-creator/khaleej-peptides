@@ -350,5 +350,15 @@
     "productIds": [
       "semax"
     ]
+  },
+  {
+    "id": "r36",
+    "name": ".",
+    "text": "Second order of DSIP for continued study. Pen packaging and labeling remained consistent with the first order.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "dsip"
+    ]
   }
 ]
