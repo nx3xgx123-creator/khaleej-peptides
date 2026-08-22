@@ -300,5 +300,15 @@
     "productIds": [
       "dsip"
     ]
+  },
+  {
+    "id": "r31",
+    "name": ".",
+    "text": "Second order of BPC-157 for our lab. Consistent quality between batches and the paperwork was easy to cross-check against the vial label.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "bpc-157"
+    ]
   }
 ]
