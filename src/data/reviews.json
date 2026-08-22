@@ -540,5 +540,15 @@
     "productIds": [
       "rt-10"
     ]
+  },
+  {
+    "id": "r55",
+    "name": ".",
+    "text": "Good experience with BPC-157. Storage instructions on the box were clear and the product held up well after reconstitution in the lab.",
+    "rating": 5,
+    "date": "2026-08-22",
+    "productIds": [
+      "bpc-157"
+    ]
   }
 ]
