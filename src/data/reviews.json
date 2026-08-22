@@ -252,5 +252,14 @@
     "productIds": [
       "rt-10"
     ]
+  },
+  {
+    "id": "r29",
+    "name": ".",
+    "text": "Ordered the BPC-157 vial . Packaging was sealed properly and the vial was clearly labeled with batch info. Reconstituted easily and storage instructions were clear.",
+    "rating": 3,
+    "productIds": [
+      "bpc-157"
+    ]
   }
 ]
