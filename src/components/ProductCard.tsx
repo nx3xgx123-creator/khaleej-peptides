@@ -97,7 +97,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={addToCartClick}
-          className={`mt-3 flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wide transition-colors ${
+          className={`mt-auto flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wide transition-colors ${
             added
               ? "bg-instock text-white"
               : "bg-gold text-white hover:bg-gold-deep"
